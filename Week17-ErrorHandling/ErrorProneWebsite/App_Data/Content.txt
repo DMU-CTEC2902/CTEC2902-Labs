@@ -1,0 +1,5 @@
+﻿<p>Here is some test content for the error-prone website.</p>
+
+<p>The site gets this content by reading it from a text file.</p>
+
+<p><strong>What could POSSIBLY go wrong?</p>
