@@ -8,7 +8,7 @@ namespace ErrorProneWebsite.Tests
     [TestClass]
     public class FileManagerTest
     {
-        private const string TEST_FILE_PATH = @"D:\DaveDocuments\DMU\CTEC2902\Code\CTEC2902-Labs\Week17-ErrorsAndLogging\ErrorProneWebsite.Tests\TestContent\TestContent.txt";
+        private const string TEST_FILE_PATH = @"C:\Users\David\Documents\DMU\CTEC2902\Code\FirstFewLabs\Week17-ErrorHandling\ErrorProneWebsite.Tests\TestContent\TestContent.txt";
         
         [TestMethod]
         public void TheFileManagerCanReadAFile()
