@@ -13,6 +13,10 @@
         <h1>Welcome to the error-prone website</h1>
 
         <asp:Label ID="lblContent" runat="server" />
+
+        <br />
+
+        <asp:Label ID="lblMoreContent" runat="server" />
     
     </div>
     </form>

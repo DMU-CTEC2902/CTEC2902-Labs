@@ -65,7 +65,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Content.txt" />
+    <Content Include="App_Data\NoContent.txt" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
