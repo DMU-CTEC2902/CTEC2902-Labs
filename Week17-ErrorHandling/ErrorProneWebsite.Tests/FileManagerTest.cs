@@ -1,5 +1,7 @@
 ﻿using System;
+using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 
 using ErrorProneWebsite.Models;
 
@@ -8,7 +10,7 @@ namespace ErrorProneWebsite.Tests
     [TestClass]
     public class FileManagerTest
     {
-        private const string TEST_FILE_PATH = @"D:\DaveDocuments\DMU\CTEC2902\Code\CTEC2902-Labs\Week17-ErrorHandling\ErrorProneWebsite.Tests\TestContent\TestContent.txt";
+        private const string TEST_FILE_PATH = @"C:\Users\David\Documents\DMU\CTEC2902\Code\FirstFewLabs\Week17-ErrorHandling\ErrorProneWebsite.Tests\TestContent\TestContent.txt";
         
         [TestMethod]
         public void TheFileManagerCanReadAFile()
@@ -22,11 +24,19 @@ namespace ErrorProneWebsite.Tests
         [TestMethod]
         public void TheFileManagerHandlesAMissingFile()
         {
-            FileManager fileManager = new FileManager(@"D:\MissingFileThereIsNoFileHere.txt");
+            FileManager fileManager = new FileManager(@"C:\MissingFileThereIsNoFileHere.txt");
 
-            Assert.IsTrue(fileManager.GetContent().Contains("Oops! The content could not be found at the location specified."));
+            Assert.IsTrue(fileManager.GetMoreContent().Contains("Oops! The content could not be found at the location specified."));
 
         }
 
+        [TestMethod]
+        [ExpectedException(typeof(FileNotFoundException))]
+        public void TheSystemThrowsAFileNotFoundExceptionWhenGivenAPathToAMissingFile()
+        {
+            FileManager fileManager = new FileManager(@"C:\MissingFileThereIsNoFileHere.txt");
+
+            Assert.IsTrue(fileManager.GetEvenMoreContent().Contains("This line won't execute as the exception will be thrown before it's hit"));
+        }
     }
 }
