@@ -1,16 +1,23 @@
 ﻿using System;
 using System.IO;
 
+using log4net;
+
+
 namespace ErrorProneWebsite.Models
 {
+    
     public class FileManager
     {
+        private readonly ILog logger = LogManager.GetLogger(typeof(FileManager).Name);
+        
         private string _contentFilePath;
 
         public FileManager(string contentFilePath)
         {
             // TODO: Complete member initialization
             this._contentFilePath = contentFilePath;
+
         }
 
         /// <summary>
@@ -36,6 +43,7 @@ namespace ErrorProneWebsite.Models
             { 
                 streamReader = new StreamReader(_contentFilePath);
                 contentMessage = streamReader.ReadToEnd();
+                logger.Info("Content read successfully");
             }
             catch (FileNotFoundException fnfEx)
             {
@@ -43,6 +51,7 @@ namespace ErrorProneWebsite.Models
                                     "Oops! The content could not be found at the location specified.",
                                     Environment.NewLine,
                                     fnfEx.Message);
+                logger.Error("The content file was not found");
             }
             catch(Exception ex)
             {
@@ -69,6 +78,7 @@ namespace ErrorProneWebsite.Models
                 using (StreamReader streamReader = new StreamReader(_contentFilePath)) 
                 {
                     contentMessage = streamReader.ReadToEnd();
+                    logger.Info("Content read successfully");
                 }
 
             }
@@ -78,6 +88,7 @@ namespace ErrorProneWebsite.Models
                                     "Oops! The content could not be found at the location specified.",
                                     Environment.NewLine,
                                     fnfEx.Message);
+                logger.Error("The content file was not found");
             }
             catch (Exception ex)
             {
@@ -85,6 +96,7 @@ namespace ErrorProneWebsite.Models
                                     "Blimey! Something totally unexpected just happened!",
                                     Environment.NewLine,
                                     ex.Message);
+                logger.Error("Something unexpected happened");
             }
 
             return contentMessage;
