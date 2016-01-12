@@ -39,7 +39,7 @@ Njoad Alghanim | ????? | None yet | 11AM - 1PM
 Norina Sumal | ????? | None yet | 9AM - 11AM
 Peter Anderson | ????? | None yet | 11AM - 1PM
 Rachel Osho | ????? | None yet | 9AM - 11AM
-Sally Boulton | ????? | None yet | 11AM - 1PM
+Sally Boulton | SallyBoulton | None yet | 11AM - 1PM
 Shane Clarke | ????? | None yet | 11AM - 1PM
 Shiran Lin | ????? | None yet | 11AM - 1PM
 Tapiwa Tiyemba | ????? | None yet | 9AM - 11AM
