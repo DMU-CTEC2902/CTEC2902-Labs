@@ -33,7 +33,7 @@ Mohammed Kharodia | ????? | None yet | 11AM - 1PM
 Mohammed Sheikh | ????? | None yet | 9AM - 11AM
 Mohammed Uddin | ????? | None yet | 9AM - 11AM
 Mwenya Mushani | ????? | None yet | 9AM - 11AM
-Nicholas Bloodworth | ????? | None yet | 11AM - 1PM
+Nicholas Bloodworth | NickBloodworth | None yet | 11AM - 1PM
 Nishant Chavda | ????? | None yet | 11AM - 1PM
 Njoad Alghanim | ????? | None yet | 11AM - 1PM
 Norina Sumal | ????? | None yet | 9AM - 11AM
