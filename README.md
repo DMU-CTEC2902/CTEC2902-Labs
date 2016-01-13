@@ -21,7 +21,7 @@ Callum Varle | Carvalth | None yet | 9AM - 11AM
 Chris Collins | ????? | None yet | 9AM - 11AM
 C Cropper | ????? | None yet | 11AM - 1PM
 Egle Sciglinskaite | ????? | None yet | 9AM - 11AM
-Elliot Dill | ????? | None yet | 9AM - 11AM
+Elliot Dill | elliot4959 | None yet | 9AM - 11AM
 Freddy Jilson | ?????? | None yet | 9AM - 11AM
 Gufran Arkate | ????? | None yet | 11AM - 1PM
 Ian Lake | ????? | None yet | 11AM - 1PM
