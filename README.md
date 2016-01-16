@@ -15,7 +15,7 @@ Pete Cooke | PeteCookeAtDMU
 
 Name | GitHub Account Name | Team | Lab they normally attend
 ------------ | ------------- | ------------- | -------------
-Aaron Mulgrew | ?????? | None yet | 9AM - 11AM
+Aaron Mulgrew | AaronMulgrew | None yet | 9AM - 11AM
 Adrian Stanislaus | ?????? | None yet | 11AM - 1PM
 Callum Varle | Carvalth | None yet | 9AM - 11AM
 Chris Collins | ????? | None yet | 9AM - 11AM
@@ -23,7 +23,7 @@ C Cropper | ????? | None yet | 11AM - 1PM
 Egle Sciglinskaite | ????? | None yet | 9AM - 11AM
 Elliot Dill | elliot4959 | None yet | 9AM - 11AM
 Freddy Jilson | ?????? | None yet | 9AM - 11AM
-Gufran Arkate | ????? | None yet | 11AM - 1PM
+Gufran Arkate | Gufraan786 | None yet | 11AM - 1PM
 Ian Lake | ????? | None yet | 11AM - 1PM
 James Sloan | ????? | None yet | 11AM - 1PM
 Kamaldip Shergill | ????? | None yet | 11AM - 1PM
