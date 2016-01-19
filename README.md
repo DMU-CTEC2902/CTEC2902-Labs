@@ -32,7 +32,7 @@ Mark James | ????? | None yet | 9AM - 11AM | ???
 Mohammed Kharodia | ????? | None yet | 11AM - 1PM | ???
 Mohammed Sheikh | MohammedSheikh | None yet | 9AM - 11AM | ???
 Mohammed Uddin | ????? | None yet | 9AM - 11AM | ???
-Mwenya Mushani | MwenyaJunior | None yet | 9AM - 11AM | ???
+Mwenya Musanshi | MwenyaJunior | None yet | 9AM - 11AM | ???
 Nicholas Bloodworth | NickBloodworth | None yet | 11AM - 1PM | ???
 Nishant Chavda | ????? | None yet | 11AM - 1PM | ???
 Njoad Alghanim | ????? | None yet | 11AM - 1PM | ???
