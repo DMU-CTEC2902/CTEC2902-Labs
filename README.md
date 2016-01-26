@@ -37,7 +37,7 @@ Nicholas Bloodworth | NickBloodworth | Two Reeds Team | 11AM - 1PM | ???
 Nishant Chavda | Nish906 | Water Team | 11AM - 1PM | ???
 Njoad Alghanim | NjoadAlghanim | Twisted Flax Team | 11AM - 1PM | ???
 Norina Sumal | npsumal | Team Viper | 9AM - 11AM | ???
-Peter Anderson | topdog5000 | None yet | 11AM - 1PM | ???
+Peter Anderson | topdog5000 | Twisted Flax Team | 11AM - 1PM | ???
 Rachel Osho | ????? | None yet | 9AM - 11AM | ???
 Sally Boulton | SallyBoulton | Two Reeds Team | 11AM - 1PM | ???
 Shane Clarke | Sclarke95 | Team Lion | 11AM - 1PM | ???
