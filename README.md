@@ -18,30 +18,30 @@ Name | GitHub Account Name | Team | Lab they normally attend | Role
 Aaron Mulgrew | AaronMulgrew | Twisted Flax Team | 9AM - 11AM | ???
 Adrian Stanislaus | ?????? | None yet | 11AM - 1PM | ???
 Callum Varle | Carvalth | Team Horus | 9AM - 11AM | ???
-Chris Collins | ChrisCollins94 | None yet | 9AM - 11AM | ???
+Chris Collins | ChrisCollins94 | Water Team | 9AM - 11AM | ???
 C Cropper | CEStephen | Team Lion | 11AM - 1PM | ???
 Egle Sciglinskaite | EgleSc | Team Horus | 9AM - 11AM | ???
 Elliot Dill | elliot4959 | Team Viper | 9AM - 11AM | ???
 Freddy Jilson | FreddyJilson | Team Horus | 9AM - 11AM | ???
 Gufran Arkate | Gufraan786 | Twisted Flax Team | 11AM - 1PM | ???
-Ian Lake | ianlake730 | None yet | 11AM - 1PM | ???
+Ian Lake | ianlake730 | Two Reeds Team | 11AM - 1PM | ???
 James Sloan | ????? | None yet | 11AM - 1PM | ???
 Kamaldip Shergill | KSShergill | Team Viper | 11AM - 1PM | ???
 Mariam Bajahzar | MariamBajahzar | Twisted Flax Team | 11AM - 1PM | ???
 Mark James | TeamAlchemists | Team Lion | 9AM - 11AM | ???
-Mohammed Kharodia | mkharodia11 | None yet | 11AM - 1PM | ???
+Mohammed Kharodia | mkharodia11 | Water Team | 11AM - 1PM | ???
 Mohammed Sheikh | MohammedSheikh | Team Horus | 9AM - 11AM | ???
 Mohammed Uddin | ????? | None yet | 9AM - 11AM | ???
 Mwenya Musanshi | MwenyaJunior | Team Horus | 9AM - 11AM | ???
-Nicholas Bloodworth | NickBloodworth | None yet | 11AM - 1PM | ???
-Nishant Chavda | ????? | None yet | 11AM - 1PM | ???
+Nicholas Bloodworth | NickBloodworth | Two Reeds Team | 11AM - 1PM | ???
+Nishant Chavda | Nish906 | Water Team | 11AM - 1PM | ???
 Njoad Alghanim | NjoadAlghanim | Twisted Flax Team | 11AM - 1PM | ???
 Norina Sumal | npsumal | Team Viper | 9AM - 11AM | ???
-Peter Anderson | ????? | None yet | 11AM - 1PM | ???
+Peter Anderson | topdog5000 | None yet | 11AM - 1PM | ???
 Rachel Osho | ????? | None yet | 9AM - 11AM | ???
-Sally Boulton | SallyBoulton | None yet | 11AM - 1PM | ???
+Sally Boulton | SallyBoulton | Two Reeds Team | 11AM - 1PM | ???
 Shane Clarke | Sclarke95 | Team Lion | 11AM - 1PM | ???
-Shiran Lin | ????? | None yet | 11AM - 1PM | ???
+Shiran Lin | shiran888 | None yet | 11AM - 1PM | ???
 Tapiwa Tiyemba | ????? | None yet | 9AM - 11AM | ???
 Uwais Akbar | UAkbar | None yet | 11AM - 1PM | ???
 Valentin Valev | Valkatastz | Team Viper | 11AM - 1PM | ???
