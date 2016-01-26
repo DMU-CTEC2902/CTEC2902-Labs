@@ -15,36 +15,36 @@ Pete Cooke | PeteCookeAtDMU
 
 Name | GitHub Account Name | Team | Lab they normally attend | Role
 ------------ | ------------- | ------------- | ------------- | -------------
-Aaron Mulgrew | AaronMulgrew | None yet | 9AM - 11AM | ???
+Aaron Mulgrew | AaronMulgrew | Twisted Flax Team | 9AM - 11AM | ???
 Adrian Stanislaus | ?????? | None yet | 11AM - 1PM | ???
 Callum Varle | Carvalth | Team Horus | 9AM - 11AM | ???
 Chris Collins | ChrisCollins94 | None yet | 9AM - 11AM | ???
-C Cropper | ????? | None yet | 11AM - 1PM | ???
+C Cropper | CEStephen | Team Lion | 11AM - 1PM | ???
 Egle Sciglinskaite | EgleSc | Team Horus | 9AM - 11AM | ???
-Elliot Dill | elliot4959 | None yet | 9AM - 11AM | ???
+Elliot Dill | elliot4959 | Team Viper | 9AM - 11AM | ???
 Freddy Jilson | FreddyJilson | Team Horus | 9AM - 11AM | ???
-Gufran Arkate | Gufraan786 | None yet | 11AM - 1PM | ???
+Gufran Arkate | Gufraan786 | Twisted Flax Team | 11AM - 1PM | ???
 Ian Lake | ianlake730 | None yet | 11AM - 1PM | ???
 James Sloan | ????? | None yet | 11AM - 1PM | ???
-Kamaldip Shergill | ????? | None yet | 11AM - 1PM | ???
-Mariam Bajahzar | ????? | None yet | 11AM - 1PM | ???
-Mark James | TeamAlchemists | None yet | 9AM - 11AM | ???
-Mohammed Kharodia | ????? | None yet | 11AM - 1PM | ???
+Kamaldip Shergill | KSShergill | Team Viper | 11AM - 1PM | ???
+Mariam Bajahzar | MariamBajahzar | Twisted Flax Team | 11AM - 1PM | ???
+Mark James | TeamAlchemists | Team Lion | 9AM - 11AM | ???
+Mohammed Kharodia | mkharodia11 | None yet | 11AM - 1PM | ???
 Mohammed Sheikh | MohammedSheikh | Team Horus | 9AM - 11AM | ???
 Mohammed Uddin | ????? | None yet | 9AM - 11AM | ???
 Mwenya Musanshi | MwenyaJunior | Team Horus | 9AM - 11AM | ???
 Nicholas Bloodworth | NickBloodworth | None yet | 11AM - 1PM | ???
 Nishant Chavda | ????? | None yet | 11AM - 1PM | ???
-Njoad Alghanim | ????? | None yet | 11AM - 1PM | ???
-Norina Sumal | npsumal | None yet | 9AM - 11AM | ???
+Njoad Alghanim | NjoadAlghanim | Twisted Flax Team | 11AM - 1PM | ???
+Norina Sumal | npsumal | Team Viper | 9AM - 11AM | ???
 Peter Anderson | ????? | None yet | 11AM - 1PM | ???
 Rachel Osho | ????? | None yet | 9AM - 11AM | ???
 Sally Boulton | SallyBoulton | None yet | 11AM - 1PM | ???
-Shane Clarke | ????? | None yet | 11AM - 1PM | ???
+Shane Clarke | Sclarke95 | Team Lion | 11AM - 1PM | ???
 Shiran Lin | ????? | None yet | 11AM - 1PM | ???
 Tapiwa Tiyemba | ????? | None yet | 9AM - 11AM | ???
 Uwais Akbar | UAkbar | None yet | 11AM - 1PM | ???
-Valentin Valev | Valkatastz | None yet | 11AM - 1PM | ???
+Valentin Valev | Valkatastz | Team Viper | 11AM - 1PM | ???
 Vijay Modhwadia | VijayModhwadia | None yet | 9AM - 11AM | ???
 
 
