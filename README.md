@@ -25,7 +25,7 @@ Elliot Dill | elliot4959 | Team Viper | 9AM - 11AM | ???
 Freddy Jilson | FreddyJilson | Team Horus | 9AM - 11AM | ???
 Gufran Arkate | Gufraan786 | Twisted Flax Team | 11AM - 1PM | ???
 Ian Lake | ianlake730 | Two Reeds Team | 11AM - 1PM | ???
-James Sloan | ????? | None yet | 11AM - 1PM | ???
+James Sloan | JaySloan | None yet | 11AM - 1PM | ???
 Kamaldip Shergill | KSShergill | Team Viper | 11AM - 1PM | ???
 Mariam Bajahzar | MariamBajahzar | Twisted Flax Team | 11AM - 1PM | ???
 Mark James | TeamAlchemists | Team Lion | 9AM - 11AM | ???
@@ -41,7 +41,7 @@ Peter Anderson | topdog5000 | Team Viper | 11AM - 1PM | ???
 Rachel Osho | ????? | None yet | 9AM - 11AM | ???
 Sally Boulton | SallyBoulton | Two Reeds Team | 11AM - 1PM | ???
 Shane Clarke | Sclarke95 | Team Lion | 11AM - 1PM | ???
-Shiran Lin | shiran888 | None yet | 11AM - 1PM | ???
+Shiran Lin | shiran888 | Two Reeds Team | 11AM - 1PM | ???
 Tapiwa Tiyemba | ????? | None yet | 9AM - 11AM | ???
 Uwais Akbar | UAkbar | None yet | 11AM - 1PM | ???
 Valentin Valev | Valkatastz | Team Viper | 11AM - 1PM | ???
