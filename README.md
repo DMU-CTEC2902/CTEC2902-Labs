@@ -31,7 +31,7 @@ Mariam Bajahzar | MariamBajahzar | Twisted Flax Team | 11AM - 1PM | ???
 Mark James | TeamAlchemists | Team Lion | 9AM - 11AM | ???
 Mohammed Kharodia | mkharodia11 | Water Team | 11AM - 1PM | ???
 Mohammed Sheikh | MohammedSheikh | Team Horus | 9AM - 11AM | ???
-Mohammed Uddin | p13204796 | None yet | 9AM - 11AM | ???
+Mohammed Uddin | p13204796 | Water Team | 9AM - 11AM | ???
 Mwenya Musanshi | MwenyaJunior | Team Horus | 9AM - 11AM | ???
 Nicholas Bloodworth | NickBloodworth | Two Reeds Team | 11AM - 1PM | ???
 Nishant Chavda | Nish906 | Water Team | 11AM - 1PM | ???
