@@ -42,7 +42,7 @@ Rachel Osho | ????? | None yet | 9AM - 11AM | ???
 Sally Boulton | SallyBoulton | Two Reeds Team | 11AM - 1PM | ???
 Shane Clarke | Sclarke95 | Team Lion | 11AM - 1PM | ???
 Shiran Lin | shiran888 | Two Reeds Team | 11AM - 1PM | ???
-Tapiwa Tiyemba | ????? | None yet | 9AM - 11AM | ???
+Tapiwa Tiyemba | tiyembatapiwa | None yet | 9AM - 11AM | ???
 Uwais Akbar | UAkbar | None yet | 11AM - 1PM | ???
 Valentin Valev | Valkatastz | Team Viper | 11AM - 1PM | ???
 Vijay Modhwadia | VijayModhwadia | None yet | 9AM - 11AM | ???
