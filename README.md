@@ -25,7 +25,7 @@ Elliot Dill | elliot4959 | Team Viper | 9AM - 11AM | ???
 Freddy Jilson | FreddyJilson | Team Horus | 9AM - 11AM | ???
 Gufran Arkate | Gufraan786 | Twisted Flax Team | 11AM - 1PM | ???
 Ian Lake | ianlake730 | Two Reeds Team | 11AM - 1PM | ???
-James Sloan | JaySloan | None yet | 11AM - 1PM | ???
+James Sloan | JaySloan | Water Team | 11AM - 1PM | ???
 Kamaldip Shergill | KSShergill | Team Viper | 11AM - 1PM | ???
 Mariam Bajahzar | MariamBajahzar | Twisted Flax Team | 11AM - 1PM | ???
 Mark James | TeamAlchemists | Team Lion | 9AM - 11AM | ???
