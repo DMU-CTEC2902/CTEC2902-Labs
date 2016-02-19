@@ -4,6 +4,8 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
+using Week23_ModelsAndDatabases.Models;
+
 namespace Week23_ModelsAndDatabases.Models
 {
     public class ProductContext : DbContext
@@ -19,9 +21,9 @@ namespace Week23_ModelsAndDatabases.Models
         {
         }
 
-        public System.Data.Entity.DbSet<Week23_ModelsAndDatabases.Models.Product> Products { get; set; }
+        public DbSet<Product> Products { get; set; }
 
-        public System.Data.Entity.DbSet<Week23_ModelsAndDatabases.Models.Category> Categories { get; set; }
+        public DbSet<Category> Categories { get; set; }
     
     }
 }
