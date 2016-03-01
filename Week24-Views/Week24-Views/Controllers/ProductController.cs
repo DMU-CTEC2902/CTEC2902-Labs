@@ -50,5 +50,18 @@ namespace Week24_Views.Controllers
             return View(selectedProduct);
         }
 
+        // GET: Edit/id 
+
+        public ActionResult Edit(int? id)
+        {
+            if (id == null) return new HttpNotFoundResult();
+
+            Product selectedProduct = _products.First(p => p.ProductId == id);
+
+            if (selectedProduct == null) return new HttpNotFoundResult();
+
+            return View(selectedProduct);
+        }
+
     }
 }
