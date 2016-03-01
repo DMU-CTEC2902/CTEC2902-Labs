@@ -35,7 +35,7 @@ namespace Week24_Views.Controllers
         // GET: Product
         public ActionResult Index()
         {
-            return View();
+            return View(_products);
         }
 
         // GET: Details/id
