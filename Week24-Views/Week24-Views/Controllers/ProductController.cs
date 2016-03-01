@@ -42,10 +42,23 @@ namespace Week24_Views.Controllers
             if (id == null) return new HttpNotFoundResult();
 
             Product selectedProduct = _products.First(p => p.ProductId == id);
-    
-            if(selectedProduct == null) return new HttpNotFoundResult();
 
-            return View(selectedProduct);
+            if (selectedProduct == null) return new HttpNotFoundResult();
+
+            Customer customer = new Customer 
+            { 
+                CustomerId = 1,
+                FirstName = "Bob",
+                LastName = "Fossil"
+            };
+
+            CustomerProductViewModel viewModel = new CustomerProductViewModel
+            {
+                Customer = customer,
+                Product = selectedProduct
+            };
+
+            return View(viewModel);
         }
 
         // GET: Edit/id 
