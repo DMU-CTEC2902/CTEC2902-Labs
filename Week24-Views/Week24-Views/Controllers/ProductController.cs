@@ -4,10 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-using System.Collections.Generic;
-using System.Linq;
-
 using Week24_Views.Models;
+using System.Diagnostics;
 
 namespace Week24_Views.Controllers
 {
@@ -62,6 +60,26 @@ namespace Week24_Views.Controllers
 
             return View(selectedProduct);
         }
+
+        // POST: Edit
+
+        [HttpPost]
+        public ActionResult Edit(Product product)
+        {
+            if(ModelState.IsValid)
+            { 
+                Debug.WriteLine(product.Name);
+                Debug.WriteLine(product.Description);
+                Debug.WriteLine(product.Price);
+
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(product);
+            }
+        }
+
 
     }
 }
