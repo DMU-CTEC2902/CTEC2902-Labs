@@ -1,0 +1,67 @@
+﻿@model Week25_Bootstrap.Models.Order
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>View order # @Model.OrderId</h2>
+
+<h3>Customer Details</h3>
+
+@Html.HiddenFor(o => o.Customer.CustomerId)
+
+<p><strong>Title:</strong> @Model.Customer.Title</p>
+<p><strong>First Name:</strong> @Model.Customer.FirstName</p>
+<p><strong>Middle Name:</strong> @Model.Customer.MiddleName</p>
+<p><strong>Last Name:</strong> @Model.Customer.LastName</p>
+
+<h4>Home address</h4>
+
+@Html.HiddenFor(o => o.Customer.HomeAddress.AddressId)
+
+<p><strong>Line 1:</strong> @Model.Customer.HomeAddress.Line1</p>
+<p><strong>Line 2:</strong> @Model.Customer.HomeAddress.Line2</p>
+<p><strong>Town:</strong> @Model.Customer.HomeAddress.Town</p>
+<p><strong>County:</strong> @Model.Customer.HomeAddress.County</p>
+<p><strong>Postcode:</strong> @Model.Customer.HomeAddress.PostCode</p>
+
+<h4>Delivery address</h4>
+
+@Html.HiddenFor(o => o.Customer.DeliveryAddress.AddressId)
+
+<p><strong>Line 1:</strong> @Model.Customer.DeliveryAddress.Line1</p>
+<p><strong>Line 2:</strong> @Model.Customer.DeliveryAddress.Line2</p>
+<p><strong>Town:</strong> @Model.Customer.DeliveryAddress.Town</p>
+<p><strong>County:</strong> @Model.Customer.DeliveryAddress.County</p>
+<p><strong>Postcode:</strong> @Model.Customer.DeliveryAddress.PostCode</p>
+
+<h3>Order details</h3>
+
+<p><strong>Date received:</strong> @Model.DateReceived.ToString("dd/MM/yyyy")</p>
+<p><strong>Date dispatched:</strong> @Model.DateDispatched.ToString("dd/MM/yyyy")</p>
+
+<table>
+
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+    </tr>
+
+    @foreach (var product in @Model.Items)
+    {
+        <tr>
+            <td>@product.ProductId</td>
+            <td>@product.Name</td>
+            <td>@product.Description</td>
+            <td>@product.Price</td>
+        </tr>
+    }
+
+    <tr>
+        <td>Total</td>
+        <td colspan="3" align="right">@Model.GetTotal()</td>
+    </tr>
+
+</table>
