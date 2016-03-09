@@ -13,39 +13,37 @@ Pete Cooke | PeteCookeAtDMU
 
 ### DMU students
 
-Name | GitHub Account Name | Team | Lab they normally attend | Role
+Name | GitHub Account Name | Team | Meeting Time | Role
 ------------ | ------------- | ------------- | ------------- | -------------
-Aaron Mulgrew | AaronMulgrew | Twisted Flax Team | 9AM - 11AM | ???
-Adrian Stanislaus | ?????? | None yet | 11AM - 1PM | ???
-Callum Varle | Carvalth | Team Horus | 9AM - 11AM | ???
-Chris Collins | ChrisCollins94 | Water Team | 9AM - 11AM | ???
-C Cropper | CEStephen | Team Lion | 11AM - 1PM | ???
-Egle Sciglinskaite | EgleSc | Team Horus | 9AM - 11AM | ???
-Elliot Dill | elliot4959 | Team Viper | 9AM - 11AM | ???
-Freddy Jilson | FreddyJilson | Team Horus | 9AM - 11AM | ???
-Gufran Arkate | Gufraan786 | Twisted Flax Team | 11AM - 1PM | ???
-Ian Lake | ianlake730 | Two Reeds Team | 11AM - 1PM | ???
-James Sloan | JaySloan | Water Team | 11AM - 1PM | ???
-Kamaldip Shergill | KSShergill | Team Viper | 11AM - 1PM | ???
-Mariam Bajahzar | MariamBajahzar | Twisted Flax Team | 11AM - 1PM | ???
-Mark James | TeamAlchemists | Team Lion | 9AM - 11AM | ???
-Mohammed Kharodia | mkharodia11 | Water Team | 11AM - 1PM | ???
-Mohammed Sheikh | MohammedSheikh | Team Horus | 9AM - 11AM | ???
-Mohammed Uddin | p13204796 | Water Team | 9AM - 11AM | ???
-Mwenya Musanshi | MwenyaJunior | Team Horus | 9AM - 11AM | ???
-Nicholas Bloodworth | NickBloodworth | Two Reeds Team | 11AM - 1PM | ???
-Nishant Chavda | Nish906 | Water Team | 11AM - 1PM | ???
-Njoad Alghanim | NjoadAlghanim | Twisted Flax Team | 11AM - 1PM | ???
-Norina Sumal | npsumal | Team Viper | 9AM - 11AM | ???
-Peter Anderson | topdog5000 | Team Viper | 11AM - 1PM | ???
-Rachel Osho | ????? | None yet | 9AM - 11AM | ???
-Sally Boulton | SallyBoulton | Two Reeds Team | 11AM - 1PM | ???
-Shane Clarke | Sclarke95 | Team Lion | 11AM - 1PM | ???
-Shiran Lin | shiran888 | Two Reeds Team | 11AM - 1PM | ???
-Tapiwa Tiyemba | tiyembatapiwa | None yet | 9AM - 11AM | ???
-Uwais Akbar | UAkbar | None yet | 11AM - 1PM | ???
-Valentin Valev | Valkatastz | Team Viper | 11AM - 1PM | ???
-Vijay Modhwadia | VijayModhwadia | None yet | 9AM - 11AM | ???
+Aaron Mulgrew | AaronMulgrew | Twisted Flax Team | 11:30 - 12:00 | Dev
+Callum Varle | Carvalth | Team Horus | 9:15 - 9:45 | Dev
+Chris Collins | ChrisCollins94 | Team Arrow | 9:45 - 10:15 | Dev
+C Cropper | CEStephen | Team Lion | 12:30 - 1:00 | Coord
+Egle Sciglinskaite | EgleSc | Team Horus | 9:15 - 9:45 | Coord
+Elliot Dill | elliot4959 | Team Viper | 11:00 - 11:30 | Dev
+Freddy Jilson | FreddyJilson | Team Horus | 9:15 - 9:45 | Coord
+Gufran Arkate | Gufraan786 | Twisted Flax Team | 11:30 - 12:00 | Dev
+Ian Lake | ianlake730 | Two Reeds Team | 10:15 - 10:45 | Dev
+James Sloan | JaySloan | Water Team | 12:00 - 12:30 | Dev
+Kamaldip Shergill | KSShergill | Team Viper | 11:00 - 11:30 | Dev
+Mariam Bajahzar | MariamBajahzar | Twisted Flax Team | 11:30 - 12:00 | Dev
+Mark James | TeamAlchemists | Team Lion | 12:30 - 1:00 | Dev
+Mohammed Kharodia | mkharodia11 | Water Team | 12:00 - 12:30 | Coord?
+Mohammed Sheikh | MohammedSheikh | Team Horus | 9:15 - 9:45 | Dev
+Mohammed Uddin | p13204796 | Water Team | 12:00 - 12:30 | Dev?
+Mwenya Musanshi | MwenyaJunior | Team Horus | 9:15 - 9:45 | Dev
+Nicholas Bloodworth | NickBloodworth | Two Reeds Team | 10:15 - 10:45 | Dev
+Nishant Chavda | Nish906 | Water Team | 12:00 - 12:30 | Coord?
+Njoad Alghanim | NjoadAlghanim | Twisted Flax Team | 11:30 - 12:00 | Dev
+Norina Sumal | npsumal | Team Viper | 11:00 - 11:30 | Coord
+Peter Anderson | topdog5000 | Team Viper | 11:00 - 11:30 | Dev
+Sally Boulton | SallyBoulton | Two Reeds Team | 10:15 - 10:45 | Coord
+Shane Clarke | Sclarke95 | Team Lion | 12:30 - 1:00 | Dev
+Shiran Lin | shiran888 | Two Reeds Team | 10:15 - 10:45 | Dev
+Tapiwa Tiyemba | tiyembatapiwa | Team Arrow | 9:45 - 10:15 | Dev
+Uwais Akbar | UAkbar | None yet | 12:00 - 12:30 | Dev
+Valentin Valev | Valkatastz | Team Viper | 11:00 - 11:30 | Dev
+Vijay Modhwadia | VijayModhwadia | Team Arrow | 9:45 - 10:15 | Dev
 
 
 ### Leicester College Students
