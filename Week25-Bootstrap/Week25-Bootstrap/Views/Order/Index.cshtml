@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>View order # @Model.OrderId</h2>
+<h2>View order <span class="label label-primary"># @Model.OrderId</span></h2>
 
 <h3>Customer Details</h3>
 
@@ -37,31 +37,47 @@
 
 <h3>Order details</h3>
 
-<p><strong>Date received:</strong> @Model.DateReceived.ToString("dd/MM/yyyy")</p>
-<p><strong>Date dispatched:</strong> @Model.DateDispatched.ToString("dd/MM/yyyy")</p>
+<div class="panel panel-default">
 
-<table>
+    <div class="panel-body">
 
-    <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Price</th>
-    </tr>
+        <p class="bg-info col-md-6"><strong>Date received:</strong> @Model.DateReceived.ToString("dd/MM/yyyy")</p>
 
-    @foreach (var product in @Model.Items)
-    {
-        <tr>
-            <td>@product.ProductId</td>
-            <td>@product.Name</td>
-            <td>@product.Description</td>
-            <td>@product.Price</td>
-        </tr>
-    }
+        <p class="bg-success col-md-6"><strong>Date dispatched:</strong> @Model.DateDispatched.ToString("dd/MM/yyyy")</p>
 
-    <tr>
-        <td>Total</td>
-        <td colspan="3" align="right">@Model.GetTotal()</td>
-    </tr>
+    </div>
+</div>
 
-</table>
+<div class="panel panel-default">
+
+    <div class="panel-body">
+
+        <table class="table table-striped">
+
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th class="text-right">Price</th>
+            </tr>
+
+            @foreach (var product in @Model.Items)
+            {
+                <tr>
+                    <td>@product.ProductId</td>
+                    <td>@product.Name</td>
+                    <td>@product.Description</td>
+                    <td class="text-right">@product.Price</td>
+                </tr>
+            }
+
+            <tr class="info">
+                <td>Total</td>
+                <td colspan="3" class="text-right">@Model.GetTotal()</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+</div>
