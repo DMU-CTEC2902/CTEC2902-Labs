@@ -20,6 +20,8 @@ namespace Week25_DataMigrations.Models
         }
 
         public System.Data.Entity.DbSet<Week25_DataMigrations.Models.Product> Products { get; set; }
+
+        public System.Data.Entity.DbSet<Week25_DataMigrations.Models.Order> Orders { get; set; }
     
     }
 }
