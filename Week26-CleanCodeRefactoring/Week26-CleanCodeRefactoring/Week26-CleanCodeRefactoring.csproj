@@ -200,6 +200,12 @@
       <DependentUpon>201603211046386_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DaveCoBusinessObjects\DaveCoBusinessObjects.csproj">
+      <Project>{4afa3b11-f245-426d-992e-ca289bf78717}</Project>
+      <Name>DaveCoBusinessObjects</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

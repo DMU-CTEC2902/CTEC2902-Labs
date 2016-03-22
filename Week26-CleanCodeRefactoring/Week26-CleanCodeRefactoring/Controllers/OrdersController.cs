@@ -8,12 +8,14 @@ using System.Web;
 using System.Web.Mvc;
 using Week26_CleanCodeRefactoring.Models;
 
+using DaveCoBusinessObjects;
+
 namespace Week26_CleanCodeRefactoring.Controllers
 {
     public class OrdersController : Controller
     {
         private ShopContext db = new ShopContext();
-
+        
         // GET: Orders
         public ActionResult Index()
         {
@@ -77,6 +79,10 @@ namespace Week26_CleanCodeRefactoring.Controllers
             return View(order);
         }
 
+
+        // Note - this method has been written REALLY BADLY on purpose, so that we can take a look at some of the refactoring tools
+        // ... and learn a little bit about how to go about cleaning dirty code up.
+
         // POST: Orders/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -84,13 +90,48 @@ namespace Week26_CleanCodeRefactoring.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "OrderId,DateCreated,DateDispatched,PaymentCardId")] Order order)
         {
-            order.OrderItems = db.OrderItems.Where(oi => oi.OrderId == order.OrderId).ToList<OrderItem>();
             
             if (ModelState.IsValid)
             {
-                db.Entry(order).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Confirm", new { id = order.OrderId });
+                // User the OrderId to repopulate order data from the database
+                order.OrderItems = db.OrderItems.Where(oi => oi.OrderId == order.OrderId).ToList<OrderItem>();
+                order.PaymentCard = db.PaymentCards.Where(pc => pc.PaymentCardId == order.PaymentCardId).First<PaymentCard>();
+
+                // Work out the amount for the order
+
+                decimal orderTotal = 0.00m;
+
+                foreach(OrderItem item in order.OrderItems) {
+                    orderTotal += item.getPrice();
+                }
+                
+                // Authorise the payment for the order
+
+                PaymentGateway gateway = new PaymentGateway();
+
+                string response = gateway.Authorise(orderTotal, order.PaymentCard.CardNumber, order.PaymentCard.CVV, order.PaymentCard.ExpiryDate);
+
+                // If the payment fails, forward the user to confirmation with an error message
+
+                if(response.Equals("PAYMENT FAILURE"))
+                {
+                    return RedirectToAction("Confirm", new { id = order.OrderId, outcome = "failure" });
+                }
+                else 
+                {
+                    // The order was successful so email the warehouse
+
+
+                    // Then email the customer (note - going to have to add a customer class...)
+                    
+
+                    // Then last but not least, update the order details in the database
+
+                    db.Entry(order).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Confirm", new { id = order.OrderId, outcome = "success" });
+                }
+
             }
             ViewBag.PaymentCardId = new SelectList(db.PaymentCards, "PaymentCardId", "CardNumber", order.PaymentCardId);
             return View(order);
@@ -98,7 +139,7 @@ namespace Week26_CleanCodeRefactoring.Controllers
 
 
         // GET: Orders/Details/5
-        public ActionResult Confirm(int? id)
+        public ActionResult Confirm(int? id, string outcome)
         {
             if (id == null)
             {
@@ -109,7 +150,14 @@ namespace Week26_CleanCodeRefactoring.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ConfirmationMessage = "The following order has been confirmed";
+            if(outcome.Equals("success"))
+            {
+                ViewBag.ConfirmationMessage = "The following order has been confirmed";
+            }
+            else if(outcome.Equals("failure"))
+            {
+                ViewBag.ConfirmationMessage = "The attempt to take your order failed";
+            }
             return View(order);
         }
 
