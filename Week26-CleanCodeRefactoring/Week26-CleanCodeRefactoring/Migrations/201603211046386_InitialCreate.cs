@@ -13,7 +13,7 @@ namespace Week26_CleanCodeRefactoring.Migrations
                     {
                         OrderId = c.Int(nullable: false, identity: true),
                         DateCreated = c.DateTime(nullable: false),
-                        DateDispatched = c.DateTime(nullable: false),
+                        DateDispatched = c.DateTime(nullable: true),
                         PaymentCardId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.OrderId)

@@ -32,7 +32,6 @@ namespace Week26_CleanCodeRefactoring.Migrations
             {
                 OrderId = 1,
                 DateCreated = new DateTime(2016, 3, 11),
-                DateDispatched = new DateTime(2016, 3, 12),
                 OrderItems = new List<OrderItem> {
                     new OrderItem { OrderItemId = 1, OrderId = 1, ProductId = 1, Quantity = 1},
                     new OrderItem { OrderItemId = 2, OrderId = 1, ProductId = 2, Quantity = 2}

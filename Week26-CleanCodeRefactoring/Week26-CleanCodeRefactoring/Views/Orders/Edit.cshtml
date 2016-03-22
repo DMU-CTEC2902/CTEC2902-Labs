@@ -41,6 +41,27 @@
             </div>
         </div>
 
+        <table class="table-striped">
+            <tr>
+                <th>Product Name</th>
+                <th>Description</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+
+            @foreach (var orderItem in Model.OrderItems)
+            {
+                <tr>
+                    <td>@orderItem.Product.Name</td>
+                    <td>@orderItem.Product.Description</td>
+                    <td>@orderItem.Quantity</td>
+                    <td>@orderItem.getPrice()</td>
+                </tr>
+            }
+
+        </table>
+
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />

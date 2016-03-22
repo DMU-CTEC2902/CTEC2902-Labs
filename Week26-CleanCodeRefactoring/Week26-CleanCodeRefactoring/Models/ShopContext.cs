@@ -21,6 +21,8 @@ namespace Week26_CleanCodeRefactoring.Models
 
         public System.Data.Entity.DbSet<Week26_CleanCodeRefactoring.Models.Order> Orders { get; set; }
 
+        public System.Data.Entity.DbSet<Week26_CleanCodeRefactoring.Models.OrderItem> OrderItems { get; set; }
+
         public System.Data.Entity.DbSet<Week26_CleanCodeRefactoring.Models.PaymentCard> PaymentCards { get; set; }
 
         public System.Data.Entity.DbSet<Week26_CleanCodeRefactoring.Models.Product> Products { get; set; }

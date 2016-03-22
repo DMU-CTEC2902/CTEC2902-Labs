@@ -68,7 +68,7 @@ namespace Week26_CleanCodeRefactoring.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Order order = db.Orders.Find(id);
+            Order order = db.Orders.Where(o => o.OrderId == id).Include(o => o.OrderItems).First();
             if (order == null)
             {
                 return HttpNotFound();
@@ -84,15 +84,35 @@ namespace Week26_CleanCodeRefactoring.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "OrderId,DateCreated,DateDispatched,PaymentCardId")] Order order)
         {
+            order.OrderItems = db.OrderItems.Where(oi => oi.OrderId == order.OrderId).ToList<OrderItem>();
+            
             if (ModelState.IsValid)
             {
                 db.Entry(order).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Confirm", new { id = order.OrderId });
             }
             ViewBag.PaymentCardId = new SelectList(db.PaymentCards, "PaymentCardId", "CardNumber", order.PaymentCardId);
             return View(order);
         }
+
+
+        // GET: Orders/Details/5
+        public ActionResult Confirm(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Order order = db.Orders.Find(id);
+            if (order == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.ConfirmationMessage = "The following order has been confirmed";
+            return View(order);
+        }
+
 
         // GET: Orders/Delete/5
         public ActionResult Delete(int? id)
