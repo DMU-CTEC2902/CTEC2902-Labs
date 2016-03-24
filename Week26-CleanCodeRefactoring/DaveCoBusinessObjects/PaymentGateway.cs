@@ -9,7 +9,7 @@ namespace DaveCoBusinessObjects
     public class PaymentGateway
     {
 
-        public string Authorise(decimal amount, string cardNo, string cvv, string expiry)
+        public string Authorise(decimal amount, string CustomerName, string cardNo, string cvv, string expiry)
         {
 
             if (cardNo.Equals("1111222233334444"))

@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using Week26_CleanCodeRefactoring.Models;
 
 using DaveCoBusinessObjects;
+using System.Text;
 
 namespace Week26_CleanCodeRefactoring.Controllers
 {
@@ -88,7 +89,7 @@ namespace Week26_CleanCodeRefactoring.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "OrderId,DateCreated,DateDispatched,PaymentCardId")] Order order)
+        public ActionResult Edit([Bind(Include = "OrderId,CustomerId,DateCreated,DateDispatched,PaymentCardId")] Order order)
         {
             
             if (ModelState.IsValid)
@@ -96,6 +97,7 @@ namespace Week26_CleanCodeRefactoring.Controllers
                 // User the OrderId to repopulate order data from the database
                 order.OrderItems = db.OrderItems.Where(oi => oi.OrderId == order.OrderId).ToList<OrderItem>();
                 order.PaymentCard = db.PaymentCards.Where(pc => pc.PaymentCardId == order.PaymentCardId).First<PaymentCard>();
+                order.Customer = db.Customers.Where(c => c.CustomerId == order.CustomerId).First<Customer>();
 
                 // Work out the amount for the order
 
@@ -108,8 +110,9 @@ namespace Week26_CleanCodeRefactoring.Controllers
                 // Authorise the payment for the order
 
                 PaymentGateway gateway = new PaymentGateway();
+                string customerName = string.Format("{0} {1}", order.Customer.FirstName, order.Customer.LastName);
 
-                string response = gateway.Authorise(orderTotal, order.PaymentCard.CardNumber, order.PaymentCard.CVV, order.PaymentCard.ExpiryDate);
+                string response = gateway.Authorise(orderTotal, customerName, order.PaymentCard.CardNumber, order.PaymentCard.CVV, order.PaymentCard.ExpiryDate);
 
                 // If the payment fails, forward the user to confirmation with an error message
 
@@ -121,9 +124,53 @@ namespace Week26_CleanCodeRefactoring.Controllers
                 {
                     // The order was successful so email the warehouse
 
+                    MailSender mailSender = new MailSender();
+                    
+                    string toEmailWarehouse = "brian.mcbrian@daveco.co.uk";
+                    string fromEmailWarehouse = "weborders@daveco.co.uk";
+                    string emailSubjectWarehouse = "New Order";
+                    
+                    StringBuilder sb = new StringBuilder();
+                    
+                    sb.Append("A new order has been received:" + Environment.NewLine);
+
+                    foreach(OrderItem item in order.OrderItems)
+                    {
+                        sb.Append(string.Format("Item name: {0} - Price: {1} - Quantity: {2} - Total Cost: {3}{4}",
+                            item.Product.Name,
+                            item.Product.Price,
+                            item.Quantity,
+                            item.getPrice(),
+                            Environment.NewLine));
+                    }
+                    
+                    string emailBodyWarehouse = sb.ToString();
+
+                    mailSender.SendMail(toEmailWarehouse, fromEmailWarehouse, emailSubjectWarehouse, emailBodyWarehouse);
 
                     // Then email the customer (note - going to have to add a customer class...)
-                    
+
+                    string toEmailCustomer = order.Customer.Email;
+                    string fromEmailCustomer = "customer.services@daveco.co.uk";
+                    string emailSubjectCustomer = "Thanks for placing an order with us";
+
+                    sb.Clear();
+
+                    sb.Append("Thankyou for placing an order with DaveCo. Your order details are:" + Environment.NewLine);
+
+                    foreach (OrderItem item in order.OrderItems)
+                    {
+                        sb.Append(string.Format("Item name: {0} - Price: {1} - Quantity: {2} - Total Cost: {3}{4}",
+                            item.Product.Name,
+                            item.Product.Price,
+                            item.Quantity,
+                            item.getPrice(),
+                            Environment.NewLine));
+                    }
+
+                    string emailBodyCustomer = sb.ToString();
+
+                    mailSender.SendMail(toEmailCustomer, fromEmailCustomer, emailSubjectCustomer, emailBodyCustomer);
 
                     // Then last but not least, update the order details in the database
 

@@ -13,6 +13,17 @@
     
     <div class="form-horizontal">
         <h4>Order</h4>
+        
+        <hr />
+
+        <h5>Customer Details</h5>
+        
+        @Html.HiddenFor(model => model.CustomerId)
+        <p><strong>Name:</strong> @String.Format("{0} {1}", Model.Customer.FirstName, Model.Customer.LastName)</p>
+        <p><strong>Email:</strong> @Model.Customer.Email</p>
+        <p><strong>Tel:</strong> @Model.Customer.TelephoneNumber</p>
+        <p><strong>Mob:</strong> @Model.Customer.MobileNumber</p>
+
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.OrderId)

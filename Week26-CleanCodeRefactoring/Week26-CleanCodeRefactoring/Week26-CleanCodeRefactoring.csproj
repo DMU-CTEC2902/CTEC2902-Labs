@@ -129,6 +129,14 @@
     <Compile Include="Migrations\201603211046386_InitialCreate.Designer.cs">
       <DependentUpon>201603211046386_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603240839292_AddedCustomer.cs" />
+    <Compile Include="Migrations\201603240839292_AddedCustomer.Designer.cs">
+      <DependentUpon>201603240839292_AddedCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603240859398_MakeDateDispatchedNullable.cs" />
+    <Compile Include="Migrations\201603240859398_MakeDateDispatchedNullable.Designer.cs">
+      <DependentUpon>201603240859398_MakeDateDispatchedNullable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\PaymentCard.cs" />
@@ -136,6 +144,7 @@
     <Compile Include="Models\OrderItem.cs" />
     <Compile Include="Models\ShopContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\Customer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -198,6 +207,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201603211046386_InitialCreate.resx">
       <DependentUpon>201603211046386_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603240839292_AddedCustomer.resx">
+      <DependentUpon>201603240839292_AddedCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603240859398_MakeDateDispatchedNullable.resx">
+      <DependentUpon>201603240859398_MakeDateDispatchedNullable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

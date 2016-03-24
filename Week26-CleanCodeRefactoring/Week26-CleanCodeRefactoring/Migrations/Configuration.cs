@@ -28,9 +28,22 @@ namespace Week26_CleanCodeRefactoring.Migrations
             products.ForEach(product => context.Products.AddOrUpdate(p => p.ProductId, product));
             context.SaveChanges();
 
+            Customer customer = new Customer
+            {
+                CustomerId = 1,
+                FirstName = "Tony",
+                LastName = "Inchpractice",
+                Email = "tony@madeupemail.com", 
+                MobileNumber = "077882223344",
+                TelephoneNumber = "011223334455"
+            };
+
+            context.Customers.AddOrUpdate(c => c.CustomerId, customer);
+
             Order order = new Order
             {
                 OrderId = 1,
+                CustomerId = 1,
                 DateCreated = new DateTime(2016, 3, 11),
                 OrderItems = new List<OrderItem> {
                     new OrderItem { OrderItemId = 1, OrderId = 1, ProductId = 1, Quantity = 1},
