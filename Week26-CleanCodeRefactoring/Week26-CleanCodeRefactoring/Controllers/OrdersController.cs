@@ -146,7 +146,10 @@ namespace Week26_CleanCodeRefactoring.Controllers
                     
                     string emailBodyWarehouse = sb.ToString();
 
-                    mailSender.SendMail(toEmailWarehouse, fromEmailWarehouse, emailSubjectWarehouse, emailBodyWarehouse);
+                    if(!mailSender.SendMail(toEmailWarehouse, fromEmailWarehouse, emailSubjectWarehouse, emailBodyWarehouse))
+                    {
+                        return RedirectToAction("Confirm", new { id = order.OrderId, outcome = "failure" });
+                    }
 
                     // Then email the customer (note - going to have to add a customer class...)
 
@@ -170,7 +173,10 @@ namespace Week26_CleanCodeRefactoring.Controllers
 
                     string emailBodyCustomer = sb.ToString();
 
-                    mailSender.SendMail(toEmailCustomer, fromEmailCustomer, emailSubjectCustomer, emailBodyCustomer);
+                    if(!mailSender.SendMail(toEmailCustomer, fromEmailCustomer, emailSubjectCustomer, emailBodyCustomer))
+                    {
+                        return RedirectToAction("Confirm", new { id = order.OrderId, outcome = "failure" });
+                    }
 
                     // Then last but not least, update the order details in the database
 
