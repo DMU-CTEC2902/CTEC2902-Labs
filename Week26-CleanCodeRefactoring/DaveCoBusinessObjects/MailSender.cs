@@ -10,7 +10,10 @@ namespace DaveCoBusinessObjects
     {
         public bool SendMail(string to, string from, string subject, string body)
         {
-            return true;
+            if (subject.Equals("New Order") || subject.Equals("Thanks for placing an order with us")) return true;
+
+            return false;
+
         }
     }
 }
