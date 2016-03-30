@@ -10,23 +10,84 @@ namespace Shop.Tests.Unit
     [TestClass]
     public class OrdersControllerTests
     {
-        [TestMethod]
-        public void TestThatAnOrderIsTakenSuccessfully()
+
+        private Order _order;
+        private OrdersController _ordersController;
+
+        [TestInitialize]
+        public void SetUp()
         {
-            
-            Order order = new Order { 
-                OrderId = 1,
-                CustomerId = 1,
+            _order = new Order
+            {
+                OrderId = 5,
+                CustomerId = 4,
                 DateCreated = new DateTime(2016, 03, 11),
                 PaymentCardId = 1
             };
 
-            OrdersController ordersController = new OrdersController();
+            _ordersController = new OrdersController();
+        }
 
-            RedirectToRouteResult result = ordersController.Edit(order) as RedirectToRouteResult;
+        
+        [TestMethod]
+        public void TestThatAnOrderIsTakenSuccessfully()
+        {
+            
+            RedirectToRouteResult result = _ordersController.Edit(_order) as RedirectToRouteResult;
 
-            Assert.AreEqual("success", result.RouteValues["outcome"]);
+            Assert.AreEqual("success", result.RouteValues["Outcome"]);
 
         }
+
+        [TestMethod]
+        public void TestThatTheOrderTotalIsCalculatedProperly()
+        {
+
+            RedirectToRouteResult result = _ordersController.Edit(_order) as RedirectToRouteResult;
+
+            Assert.AreEqual(1259.97m, result.RouteValues["OrderTotal"]);
+
+        }
+
+        [TestMethod]
+        public void TestThatSuccessfulPaymentFeedbackIsProvided()
+        {
+
+            RedirectToRouteResult result = _ordersController.Edit(_order) as RedirectToRouteResult;
+
+            Assert.AreEqual("Payment successful", result.RouteValues["PaymentOutcome"]);
+
+        }
+
+        [TestMethod]
+        public void TestThatWarehouseNotificationFeedbackIsProvided()
+        {
+
+            RedirectToRouteResult result = _ordersController.Edit(_order) as RedirectToRouteResult;
+
+            Assert.AreEqual("Our warehouse has been notified and will commence packing and sending your order", result.RouteValues["WarehouseNotificationOutcome"]);
+
+        }
+
+        [TestMethod]
+        public void TestThatCustomerEmailSent()
+        {
+
+            RedirectToRouteResult result = _ordersController.Edit(_order) as RedirectToRouteResult;
+
+            Assert.AreEqual("An email confirming your order has been sent to tony@madeupemail.com", result.RouteValues["CustomerEmailNotificationOutcome"]);
+
+        }
+
+        [TestMethod]
+        public void TestThatDatabaseUpdateConfirmed()
+        {
+
+            RedirectToRouteResult result = _ordersController.Edit(_order) as RedirectToRouteResult;
+
+            Assert.AreEqual("Our database has been updated to confirm your order", result.RouteValues["DatabaseUpdateOutcome"]);
+
+        }
+
     }
 }

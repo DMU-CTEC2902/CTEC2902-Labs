@@ -91,7 +91,10 @@ namespace Week26_CleanCodeRefactoring.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "OrderId,CustomerId,DateCreated,DateDispatched,PaymentCardId")] Order order)
         {
-            
+
+            OrderConfirmation orderConfirmation = new OrderConfirmation();
+            orderConfirmation.OrderId = order.OrderId;
+
             if (ModelState.IsValid)
             {
                 // User the OrderId to repopulate order data from the database
@@ -116,12 +119,17 @@ namespace Week26_CleanCodeRefactoring.Controllers
 
                 // If the payment fails, forward the user to confirmation with an error message
 
+                orderConfirmation.OrderTotal = orderTotal;
+
                 if(response.Equals("PAYMENT FAILURE"))
                 {
+                    orderConfirmation.PaymentOutcome = "Payment failed";
                     return RedirectToAction("Confirm", new { id = order.OrderId, outcome = "failure" });
                 }
                 else 
                 {
+                    orderConfirmation.PaymentOutcome = "Payment successful";
+                    
                     // The order was successful so email the warehouse
 
                     MailSender mailSender = new MailSender();
@@ -148,7 +156,12 @@ namespace Week26_CleanCodeRefactoring.Controllers
 
                     if(!mailSender.SendMail(toEmailWarehouse, fromEmailWarehouse, emailSubjectWarehouse, emailBodyWarehouse))
                     {
-                        return RedirectToAction("Confirm", new { id = order.OrderId, outcome = "failure" });
+                        orderConfirmation.WarehouseNotificationOutcome = "An error occurred when notifying the warehouse of your order. Please call customer services on 01112 223344.";
+                        return RedirectToAction("Confirm", orderConfirmation);
+                    }
+                    else
+                    {
+                        orderConfirmation.WarehouseNotificationOutcome = "Our warehouse has been notified and will commence packing and sending your order";
                     }
 
                     // Then email the customer (note - going to have to add a customer class...)
@@ -175,14 +188,30 @@ namespace Week26_CleanCodeRefactoring.Controllers
 
                     if(!mailSender.SendMail(toEmailCustomer, fromEmailCustomer, emailSubjectCustomer, emailBodyCustomer))
                     {
-                        return RedirectToAction("Confirm", new { id = order.OrderId, outcome = "failure" });
+                        orderConfirmation.CustomerEmailNotificationOutcome = "We were unable to send you a confirmation email. Please call Please call customer services on 01112 223344 and a customer services representative will send you confirmation personally.";
+                        return RedirectToAction("Confirm", orderConfirmation);
+                    }
+                    else
+                    {
+                        orderConfirmation.CustomerEmailNotificationOutcome = string.Format("An email confirming your order has been sent to {0}", order.Customer.Email);
                     }
 
                     // Then last but not least, update the order details in the database
 
-                    db.Entry(order).State = EntityState.Modified;
-                    db.SaveChanges();
-                    return RedirectToAction("Confirm", new { id = order.OrderId, outcome = "success" });
+                    try
+                    {
+                        db.Entry(order).State = EntityState.Modified;
+                        db.SaveChanges();
+                        orderConfirmation.DatabaseUpdateOutcome = "Our database has been updated to confirm your order";
+                    }
+                    catch(Exception ex)
+                    {
+                        orderConfirmation.DatabaseUpdateOutcome = "Unfortunately there was an error saving your order in our database. Our customer service representatives know that this error occurred and will process your order. Please call 01112 223344 and they will confirm your order was successful.";
+                    
+                    }
+
+                    orderConfirmation.Outcome = "success";
+                    return RedirectToAction("Confirm", orderConfirmation);
                 }
 
             }
@@ -191,26 +220,20 @@ namespace Week26_CleanCodeRefactoring.Controllers
         }
 
 
-        // GET: Orders/Details/5
-        public ActionResult Confirm(int? id, string outcome)
+        public ActionResult Confirm(OrderConfirmation confirmation)
         {
-            if (id == null)
+            if (confirmation.OrderId == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Order order = db.Orders.Find(id);
+            Order order = db.Orders.Find(confirmation.OrderId);
             if (order == null)
             {
                 return HttpNotFound();
             }
-            if(outcome.Equals("success"))
-            {
-                ViewBag.ConfirmationMessage = "The following order has been confirmed";
-            }
-            else if(outcome.Equals("failure"))
-            {
-                ViewBag.ConfirmationMessage = "The attempt to take your order failed";
-            }
+
+            ViewBag.Confirmation = confirmation;
+
             return View(order);
         }
 
