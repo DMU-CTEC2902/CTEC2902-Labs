@@ -1,0 +1,61 @@
+﻿@model Week27_DependencyInjection.Models.Order
+
+@{
+    ViewBag.Title = "Confirm";
+}
+
+<h2>Confirm</h2>
+
+<h2>Order Confirmation</h2>
+
+<p>Your order was a @ViewBag.Confirmation.Outcome</p>
+
+<p>A payment for @ViewBag.Confirmation.OrderTotal was attempted. The result of this payment was @ViewBag.Confirmation.PaymentOutcome</p>
+
+<p>@ViewBag.Confirmation.WarehouseNotificationOutcome</p>
+
+<p>@ViewBag.Confirmation.CustomerEmailNotificationOutcome</p>
+
+<p>@ViewBag.Confirmation.DatabaseUpdateOutcome</p>
+
+<dl class="dl-horizontal">
+
+    <dt>
+        @Html.DisplayNameFor(model => model.DateCreated)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.DateCreated)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.DateDispatched)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.DateDispatched)
+    </dd>
+
+</dl>
+
+<table class="table-striped">
+    <tr>
+        <th>Product Name</th>
+        <th>Description</th>
+        <th>Quantity</th>
+        <th>Price</th>
+    </tr>
+
+    @foreach (var orderItem in Model.OrderItems)
+    {
+        <tr>
+            <td>@orderItem.Product.Name</td>
+            <td>@orderItem.Product.Description</td>
+            <td>@orderItem.Quantity</td>
+            <td>@orderItem.getPrice()</td>
+        </tr>
+    }
+
+</table>
+
+
