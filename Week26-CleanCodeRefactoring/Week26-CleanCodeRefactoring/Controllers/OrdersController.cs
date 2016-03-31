@@ -137,6 +137,14 @@ namespace Week26_CleanCodeRefactoring.Controllers
         }
 
 
+        /// <summary>
+        /// These methods are NOT correct as they contain all sorts of "magic data" such as people's email addresses etc.
+        /// In reality, you would keep such data in a configuration file (or possibly even in a configuration table in the database, 
+        /// so it could be changed without having to rebuild and redeploy the website).
+        /// 
+        /// Also - you'd never do something as dopey as sending an important email just to one person in the warehouse (called Brian), would you?
+        /// </summary>
+        
         private string SendWarehouseMessage(Order order)
         {
             StringBuilder sb = new StringBuilder();
