@@ -91,6 +91,7 @@
     <Compile Include="OrdersControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="OrdersControllerConfirmTests.cs" />
+    <Compile Include="OrderTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Week26-CleanCodeRefactoring\Week26-CleanCodeRefactoring.csproj">

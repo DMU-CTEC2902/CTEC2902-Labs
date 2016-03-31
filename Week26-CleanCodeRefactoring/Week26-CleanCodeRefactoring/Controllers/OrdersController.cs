@@ -97,126 +97,107 @@ namespace Week26_CleanCodeRefactoring.Controllers
 
             if (ModelState.IsValid)
             {
-                // User the OrderId to repopulate order data from the database
+                
                 order.OrderItems = db.OrderItems.Where(oi => oi.OrderId == order.OrderId).ToList<OrderItem>();
                 order.PaymentCard = db.PaymentCards.Where(pc => pc.PaymentCardId == order.PaymentCardId).First<PaymentCard>();
                 order.Customer = db.Customers.Where(c => c.CustomerId == order.CustomerId).First<Customer>();
 
-                // Work out the amount for the order
-
-                decimal orderTotal = 0.00m;
-
-                foreach(OrderItem item in order.OrderItems) {
-                    orderTotal += item.getPrice();
-                }
+                orderConfirmation.OrderTotal = order.getTotalValue();
                 
-                // Authorise the payment for the order
-
-                PaymentGateway gateway = new PaymentGateway();
-                string customerName = string.Format("{0} {1}", order.Customer.FirstName, order.Customer.LastName);
-
-                string response = gateway.Authorise(orderTotal, customerName, order.PaymentCard.CardNumber, order.PaymentCard.CVV, order.PaymentCard.ExpiryDate);
-
-                // If the payment fails, forward the user to confirmation with an error message
-
-                orderConfirmation.OrderTotal = orderTotal;
-
-                if(response.Equals("PAYMENT FAILURE"))
+                if (ProcessPayment(order).Equals("PAYMENT FAILURE"))
                 {
                     orderConfirmation.PaymentOutcome = "Payment failed";
                     return RedirectToAction("Confirm", new { id = order.OrderId, outcome = "failure" });
                 }
-                else 
+
+                orderConfirmation.PaymentOutcome = "Payment successful";
+                    
+                orderConfirmation.WarehouseNotificationOutcome = SendWarehouseMessage(order);
+
+                orderConfirmation.CustomerEmailNotificationOutcome = SendCustomerOrderMessage(order);
+
+                try
                 {
-                    orderConfirmation.PaymentOutcome = "Payment successful";
-                    
-                    // The order was successful so email the warehouse
-
-                    MailSender mailSender = new MailSender();
-                    
-                    string toEmailWarehouse = "brian.mcbrian@daveco.co.uk";
-                    string fromEmailWarehouse = "weborders@daveco.co.uk";
-                    string emailSubjectWarehouse = "New Order";
-                    
-                    StringBuilder sb = new StringBuilder();
-                    
-                    sb.Append("A new order has been received:" + Environment.NewLine);
-
-                    foreach(OrderItem item in order.OrderItems)
-                    {
-                        sb.Append(string.Format("Item name: {0} - Price: {1} - Quantity: {2} - Total Cost: {3}{4}",
-                            item.Product.Name,
-                            item.Product.Price,
-                            item.Quantity,
-                            item.getPrice(),
-                            Environment.NewLine));
-                    }
-                    
-                    string emailBodyWarehouse = sb.ToString();
-
-                    if(!mailSender.SendMail(toEmailWarehouse, fromEmailWarehouse, emailSubjectWarehouse, emailBodyWarehouse))
-                    {
-                        orderConfirmation.WarehouseNotificationOutcome = "An error occurred when notifying the warehouse of your order. Please call customer services on 01112 223344.";
-                        return RedirectToAction("Confirm", orderConfirmation);
-                    }
-                    else
-                    {
-                        orderConfirmation.WarehouseNotificationOutcome = "Our warehouse has been notified and will commence packing and sending your order";
-                    }
-
-                    // Then email the customer (note - going to have to add a customer class...)
-
-                    string toEmailCustomer = order.Customer.Email;
-                    string fromEmailCustomer = "customer.services@daveco.co.uk";
-                    string emailSubjectCustomer = "Thanks for placing an order with us";
-
-                    sb.Clear();
-
-                    sb.Append("Thankyou for placing an order with DaveCo. Your order details are:" + Environment.NewLine);
-
-                    foreach (OrderItem item in order.OrderItems)
-                    {
-                        sb.Append(string.Format("Item name: {0} - Price: {1} - Quantity: {2} - Total Cost: {3}{4}",
-                            item.Product.Name,
-                            item.Product.Price,
-                            item.Quantity,
-                            item.getPrice(),
-                            Environment.NewLine));
-                    }
-
-                    string emailBodyCustomer = sb.ToString();
-
-                    if(!mailSender.SendMail(toEmailCustomer, fromEmailCustomer, emailSubjectCustomer, emailBodyCustomer))
-                    {
-                        orderConfirmation.CustomerEmailNotificationOutcome = "We were unable to send you a confirmation email. Please call Please call customer services on 01112 223344 and a customer services representative will send you confirmation personally.";
-                        return RedirectToAction("Confirm", orderConfirmation);
-                    }
-                    else
-                    {
-                        orderConfirmation.CustomerEmailNotificationOutcome = string.Format("An email confirming your order has been sent to {0}", order.Customer.Email);
-                    }
-
-                    // Then last but not least, update the order details in the database
-
-                    try
-                    {
-                        db.Entry(order).State = EntityState.Modified;
-                        db.SaveChanges();
-                        orderConfirmation.DatabaseUpdateOutcome = "Our database has been updated to confirm your order";
-                    }
-                    catch(Exception ex)
-                    {
-                        orderConfirmation.DatabaseUpdateOutcome = "Unfortunately there was an error saving your order in our database. Our customer service representatives know that this error occurred and will process your order. Please call 01112 223344 and they will confirm your order was successful.";
-                    
-                    }
-
-                    orderConfirmation.Outcome = "success";
-                    return RedirectToAction("Confirm", orderConfirmation);
+                    db.Entry(order).State = EntityState.Modified;
+                    db.SaveChanges();
+                    orderConfirmation.DatabaseUpdateOutcome = "Our database has been updated to confirm your order";
+                }
+                catch(Exception ex)
+                {
+                    orderConfirmation.DatabaseUpdateOutcome = "Unfortunately there was an error saving your order in our database. Our customer service representatives know that this error occurred and will process your order. Please call 01112 223344 and they will confirm your order was successful.";
+                    // you would log ex.Message here, of course.                    
                 }
 
+                orderConfirmation.Outcome = "success";
+                return RedirectToAction("Confirm", orderConfirmation);
+ 
             }
             ViewBag.PaymentCardId = new SelectList(db.PaymentCards, "PaymentCardId", "CardNumber", order.PaymentCardId);
             return View(order);
+        }
+
+
+        private string SendWarehouseMessage(Order order)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("A new order has arrived" + Environment.NewLine);
+            sb.Append(order.printOrderItems());
+
+            Message warehouseMessage = new Message
+            {
+                To = "brian.mcbrian@daveco.co.uk",
+                From = "weborders@daveco.co.uk",
+                Subject = "New Order",
+                Body = sb.ToString()
+            };
+
+            if (SendMessage(warehouseMessage))
+            {
+                return "Our warehouse has been notified and will commence packing and sending your order";
+            }
+            else
+            {
+                return "An error occurred when notifying the warehouse of your order. Please call customer services on 01112 223344.";
+            };
+        }
+        
+        private string SendCustomerOrderMessage(Order order)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Thankyou for placing an order with us!" + Environment.NewLine);
+            sb.Append(order.printOrderItems());
+
+            Message customerConfirmationMessage = new Message
+            {
+                To = order.Customer.Email,
+                From = "customer.services@daveco.co.uk",
+                Subject = "Thanks for placing an order with us",
+                Body = sb.ToString()
+            };
+
+            if (SendMessage(customerConfirmationMessage))
+            {
+                return string.Format("An email confirming your order has been sent to {0}", order.Customer.Email);
+            }
+            else
+            {
+                return "We were unable to send you a confirmation email. Please call Please call customer services on 01112 223344 and a customer services representative will send you confirmation personally.";
+            };
+        }
+
+        private bool SendMessage(Message message)
+        {
+            MailSender mailSender = new MailSender();
+
+            return mailSender.SendMail(message.To, message.From, message.Subject, message.Body);
+        }
+
+        private static string ProcessPayment(Order order)
+        {
+            PaymentGateway gateway = new PaymentGateway();
+            string customerName = string.Format("{0} {1}", order.Customer.FirstName, order.Customer.LastName);
+            string response = gateway.Authorise(order.getTotalValue(), customerName, order.PaymentCard.CardNumber, order.PaymentCard.CVV, order.PaymentCard.ExpiryDate);
+            return response;
         }
 
 

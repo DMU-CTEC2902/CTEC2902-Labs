@@ -8,8 +8,13 @@
 
 <p>Your order was a @ViewBag.Confirmation.Outcome</p>
 
-<p>A payment for @ViewBag.Confirmation.OrderTotal was attempted. The result was </p>
+<p>A payment for @ViewBag.Confirmation.OrderTotal was attempted. The result of this payment was @ViewBag.Confirmation.PaymentOutcome</p>
 
+<p>@ViewBag.Confirmation.WarehouseNotificationOutcome</p>
+
+<p>@ViewBag.Confirmation.CustomerEmailNotificationOutcome</p>
+
+<p>@ViewBag.Confirmation.DatabaseUpdateOutcome</p>
 
 <dl class="dl-horizontal">
 
@@ -51,5 +56,4 @@
 
 </table>
 
-</div>
 

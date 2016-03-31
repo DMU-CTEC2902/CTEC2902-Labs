@@ -138,6 +138,7 @@
       <DependentUpon>201603240859398_MakeDateDispatchedNullable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderConfirmation.cs" />
     <Compile Include="Models\PaymentCard.cs" />
