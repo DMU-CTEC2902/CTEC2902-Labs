@@ -9,6 +9,10 @@ using System.Web.Mvc;
 using System.Text;
 
 using Week27_DependencyInjection.Models;
+using Week27_DependencyInjection.Interfaces;
+using Week27_DependencyInjection.Services.PaymentProcessors;
+using Week27_DependencyInjection.Services.MessagingServices;
+
 using AcmeBusinessObjects;
 
 namespace Week27_DependencyInjection.Controllers
@@ -192,38 +196,26 @@ namespace Week27_DependencyInjection.Controllers
 
         private bool SendMessage(Message message)
         {
-            SendAMail sendAMail = new SendAMail();
+            IMessageService messageService = new DaveCoMessagingServiceAdaptor();
 
-            sendAMail.SendTo = message.To;
-            sendAMail.SentFrom = message.From;
-            sendAMail.MailSubject = message.Subject;
-            sendAMail.MailBody = message.Body;
-
-            return sendAMail.Send();
+            return messageService.SendMessage(message);
+            
         }
 
-        private static string ProcessPayment(Order order)
+        private string ProcessPayment(Order order)
         {
-            Payment payment = new Payment();
-            payment.PayerName = string.Format("{0} {1}", order.Customer.FirstName, order.Customer.LastName);
-            payment.CardNumber = order.PaymentCard.CardNumber;
-            payment.ExpiryDate = order.PaymentCard.ExpiryDate;
-            payment.CVV = order.PaymentCard.CVV;
-            payment.PaymentAmount = order.getTotalValue();
+            IPaymentProcessor paymentProcessor = new DaveCoPaymentProcessorAdaptor();
 
-            PaymentProvider provider = new PaymentProvider();
+            paymentProcessor.CardNumber = order.PaymentCard.CardNumber;
+            paymentProcessor.CardHolderName = string.Format("{0} {1}", order.Customer.FirstName, order.Customer.LastName);
+            paymentProcessor.CardExpiryDate = order.PaymentCard.ExpiryDate;
+            paymentProcessor.CVV = order.PaymentCard.CVV;
+            paymentProcessor.PaymentAmount = order.getTotalValue();
 
-            if (provider.Authorise(payment))
-            {
-                return provider.ResponseCode;
-            }
-            else
-            {
-                return "PAYMENT FAILURE";
-            }
+            paymentProcessor.processPayment();
+            return paymentProcessor.ResponseCode;
 
-        }
-
+       }
 
         public ActionResult Confirm(OrderConfirmation confirmation)
         {
