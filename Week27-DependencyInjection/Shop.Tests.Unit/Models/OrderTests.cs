@@ -5,7 +5,7 @@ using System.Text;
 
 using Week27_DependencyInjection.Models;
 
-namespace Shop.Tests.Unit
+namespace Shop.Tests.Unit.Models
 {
     [TestClass]
     public class OrderTests
