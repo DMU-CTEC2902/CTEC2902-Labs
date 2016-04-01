@@ -19,7 +19,7 @@ namespace AcmeBusinessObjects
                 return true;
             }
 
-            ResponseCode = "PAYMENT FAILURE";
+            ResponseCode = "FAILED!";
 
             return false;
         }
