@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Week27_DependencyInjection.Interfaces
 {
-    interface IPaymentProcessor
+    public interface IPaymentProcessor
     {
         string CardNumber { get; set; }
         string CardHolderName { get; set; }

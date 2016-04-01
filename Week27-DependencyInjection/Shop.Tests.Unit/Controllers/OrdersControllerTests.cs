@@ -4,6 +4,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Web.Mvc;
 using Week27_DependencyInjection.Controllers;
 using Week27_DependencyInjection.Models;
+using Week27_DependencyInjection.Interfaces;
+using Week27_DependencyInjection.Services.MessagingServices;
+using Week27_DependencyInjection.Services.PaymentProcessors;
 
 namespace Shop.Tests.Unit.Controllers
 {
@@ -25,7 +28,10 @@ namespace Shop.Tests.Unit.Controllers
                 PaymentCardId = 1
             };
 
-            _ordersController = new OrdersController();
+            IPaymentProcessor paymentProcessor = new AcmePaymentProcessorAdaptor();
+            IMessageService messagingService = new AcmeMessagingServiceAdaptor();
+
+            _ordersController = new OrdersController(messagingService, paymentProcessor);
         }
 
         

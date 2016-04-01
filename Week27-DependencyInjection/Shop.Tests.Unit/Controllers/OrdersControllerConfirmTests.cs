@@ -6,6 +6,10 @@ using System.Web.Mvc;
 using Week27_DependencyInjection.Controllers;
 using Week27_DependencyInjection.Models;
 
+using Week27_DependencyInjection.Interfaces;
+using Week27_DependencyInjection.Services.MessagingServices;
+using Week27_DependencyInjection.Services.PaymentProcessors;
+
 namespace Shop.Tests.Unit.Controllers
 {
     [TestClass]
@@ -15,7 +19,10 @@ namespace Shop.Tests.Unit.Controllers
         public void TestOrderTotalDisplayed()
         {
 
-            OrdersController _ordersController = new OrdersController();
+            IPaymentProcessor paymentProcessor = new AcmePaymentProcessorAdaptor();
+            IMessageService messagingService = new AcmeMessagingServiceAdaptor();
+
+            OrdersController _ordersController = new OrdersController(messagingService, paymentProcessor);
 
             OrderConfirmation _confirmaton = new OrderConfirmation
             {

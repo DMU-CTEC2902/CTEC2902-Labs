@@ -13,13 +13,26 @@ using Week27_DependencyInjection.Interfaces;
 using Week27_DependencyInjection.Services.PaymentProcessors;
 using Week27_DependencyInjection.Services.MessagingServices;
 
-using AcmeBusinessObjects;
 
 namespace Week27_DependencyInjection.Controllers
 {
     public class OrdersController : Controller
     {
+        private IMessageService _messageService;
+        private IPaymentProcessor _paymentProcessor;
+
+        
         private ShopContext db = new ShopContext();
+
+
+        public OrdersController(IMessageService messagingService, IPaymentProcessor paymentProcessor)
+        {
+
+            _messageService = messagingService;
+            _paymentProcessor = paymentProcessor;
+
+        }
+
 
         // GET: Orders
         public ActionResult Index()
@@ -196,24 +209,21 @@ namespace Week27_DependencyInjection.Controllers
 
         private bool SendMessage(Message message)
         {
-            IMessageService messageService = new DaveCoMessagingServiceAdaptor();
-
-            return messageService.SendMessage(message);
+            return _messageService.SendMessage(message);
             
         }
 
         private string ProcessPayment(Order order)
         {
-            IPaymentProcessor paymentProcessor = new DaveCoPaymentProcessorAdaptor();
+            
+            _paymentProcessor.CardNumber = order.PaymentCard.CardNumber;
+            _paymentProcessor.CardHolderName = string.Format("{0} {1}", order.Customer.FirstName, order.Customer.LastName);
+            _paymentProcessor.CardExpiryDate = order.PaymentCard.ExpiryDate;
+            _paymentProcessor.CVV = order.PaymentCard.CVV;
+            _paymentProcessor.PaymentAmount = order.getTotalValue();
 
-            paymentProcessor.CardNumber = order.PaymentCard.CardNumber;
-            paymentProcessor.CardHolderName = string.Format("{0} {1}", order.Customer.FirstName, order.Customer.LastName);
-            paymentProcessor.CardExpiryDate = order.PaymentCard.ExpiryDate;
-            paymentProcessor.CVV = order.PaymentCard.CVV;
-            paymentProcessor.PaymentAmount = order.getTotalValue();
-
-            paymentProcessor.processPayment();
-            return paymentProcessor.ResponseCode;
+            _paymentProcessor.processPayment();
+            return _paymentProcessor.ResponseCode;
 
        }
 
