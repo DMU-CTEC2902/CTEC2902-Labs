@@ -5,7 +5,7 @@ using System.Web.Mvc;
 using Week27_DependencyInjection.Controllers;
 using Week27_DependencyInjection.Models;
 
-namespace Shop.Tests.Unit
+namespace Shop.Tests.Unit.Controllers
 {
     [TestClass]
     public class OrdersControllerTests
