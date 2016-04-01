@@ -9,7 +9,7 @@ using System.Web.Mvc;
 using System.Text;
 
 using Week27_DependencyInjection.Models;
-using DaveCoBusinessObjects;
+using AcmeBusinessObjects;
 
 namespace Week27_DependencyInjection.Controllers
 {
@@ -192,17 +192,36 @@ namespace Week27_DependencyInjection.Controllers
 
         private bool SendMessage(Message message)
         {
-            MailSender mailSender = new MailSender();
+            SendAMail sendAMail = new SendAMail();
 
-            return mailSender.SendMail(message.To, message.From, message.Subject, message.Body);
+            sendAMail.SendTo = message.To;
+            sendAMail.SentFrom = message.From;
+            sendAMail.MailSubject = message.Subject;
+            sendAMail.MailBody = message.Body;
+
+            return sendAMail.Send();
         }
 
         private static string ProcessPayment(Order order)
         {
-            PaymentGateway gateway = new PaymentGateway();
-            string customerName = string.Format("{0} {1}", order.Customer.FirstName, order.Customer.LastName);
-            string response = gateway.Authorise(order.getTotalValue(), customerName, order.PaymentCard.CardNumber, order.PaymentCard.CVV, order.PaymentCard.ExpiryDate);
-            return response;
+            Payment payment = new Payment();
+            payment.PayerName = string.Format("{0} {1}", order.Customer.FirstName, order.Customer.LastName);
+            payment.CardNumber = order.PaymentCard.CardNumber;
+            payment.ExpiryDate = order.PaymentCard.ExpiryDate;
+            payment.CVV = order.PaymentCard.CVV;
+            payment.PaymentAmount = order.getTotalValue();
+
+            PaymentProvider provider = new PaymentProvider();
+
+            if (provider.Authorise(payment))
+            {
+                return provider.ResponseCode;
+            }
+            else
+            {
+                return "PAYMENT FAILURE";
+            }
+
         }
 
 
