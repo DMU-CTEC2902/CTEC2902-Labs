@@ -92,7 +92,6 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
-    <Compile Include="Controllers\OrdersControllerConfirmTests.cs" />
     <Compile Include="Controllers\OrdersControllerTests.cs" />
     <Compile Include="Models\OrderTests.cs" />
   </ItemGroup>
