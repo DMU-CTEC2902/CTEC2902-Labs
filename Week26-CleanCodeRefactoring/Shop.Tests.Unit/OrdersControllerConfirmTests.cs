@@ -2,15 +2,11 @@
 using Microsoft.CSharp;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Web.Mvc;
+using Week26_CleanCodeRefactoring.Controllers;
+using Week26_CleanCodeRefactoring.Models;
 
-using Week27_DependencyInjection.Controllers;
-using Week27_DependencyInjection.Models;
 
-using Week27_DependencyInjection.Interfaces;
-using Week27_DependencyInjection.Services.MessagingServices;
-using Week27_DependencyInjection.Services.PaymentProcessors;
-
-namespace Shop.Tests.Unit.Controllers
+namespace Shop.Tests.Unit
 {
     [TestClass]
     public class OrdersControllerConfirmTests
@@ -19,14 +15,11 @@ namespace Shop.Tests.Unit.Controllers
         public void TestOrderTotalDisplayed()
         {
 
-            IPaymentProcessor paymentProcessor = new AcmePaymentProcessorAdaptor();
-            IMessageService messagingService = new AcmeMessagingServiceAdaptor();
-
-            OrdersController _ordersController = new OrdersController(messagingService, paymentProcessor);
+            OrdersController _ordersController = new OrdersController();
 
             OrderConfirmation _confirmaton = new OrderConfirmation
             {
-                OrderId = 1,
+                OrderId = 5,
                 Outcome = "success",
                 OrderTotal = 299.99m
             };
@@ -41,5 +34,7 @@ namespace Shop.Tests.Unit.Controllers
         // We could add a whole series of similar confirmation tests here, especially if we wanted to tidy
         // up any of the more business-jargon type language about AuthCodes etc into more customer-friendly language
         // if we did that, or added any display language to the View, we could test it here.
+
+
     }
 }

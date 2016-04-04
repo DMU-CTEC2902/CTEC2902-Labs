@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using Ninject;
 
 using Week27_DependencyInjection.Interfaces;
+using Week27_DependencyInjection.Models;
 using Week27_DependencyInjection.Services.MessagingServices;
 using Week27_DependencyInjection.Services.PaymentProcessors;
 
@@ -34,6 +35,7 @@ namespace Week27_DependencyInjection.Infrastructure
         {
             _kernel.Bind<IMessageService>().To<AcmeMessagingServiceAdaptor>();
             _kernel.Bind<IPaymentProcessor>().To<AcmePaymentProcessorAdaptor>();
+            _kernel.Bind<IShopContext>().To<ShopContext>();
         }
 
 

@@ -151,6 +151,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Interfaces\IShopContext.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderConfirmation.cs" />

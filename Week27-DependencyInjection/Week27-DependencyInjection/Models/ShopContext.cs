@@ -4,9 +4,11 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
+using Week27_DependencyInjection.Interfaces;
+
 namespace Week27_DependencyInjection.Models
 {
-    public class ShopContext : DbContext
+    public class ShopContext : DbContext, IShopContext
     {
         // You can add custom code to this file. Changes will not be overwritten.
         // 
@@ -17,6 +19,11 @@ namespace Week27_DependencyInjection.Models
     
         public ShopContext() : base("name=ShopContext")
         {
+        }
+
+        public void SetModified(object entity)
+        {
+            Entry(entity).State = EntityState.Modified;
         }
 
         public System.Data.Entity.DbSet<Order> Orders { get; set; }

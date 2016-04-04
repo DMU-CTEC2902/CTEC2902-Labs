@@ -20,24 +20,22 @@ namespace Week27_DependencyInjection.Controllers
     {
         private IMessageService _messageService;
         private IPaymentProcessor _paymentProcessor;
-
         
-        private ShopContext db = new ShopContext();
-
-
-        public OrdersController(IMessageService messagingService, IPaymentProcessor paymentProcessor)
+        private IShopContext _db;
+        
+        public OrdersController(IMessageService messagingService, IPaymentProcessor paymentProcessor, IShopContext db)
         {
 
             _messageService = messagingService;
             _paymentProcessor = paymentProcessor;
-
+            _db = db;
         }
 
 
         // GET: Orders
         public ActionResult Index()
         {
-            var orders = db.Orders.Include(o => o.Customer).Include(o => o.PaymentCard);
+            var orders = _db.Orders.Include(o => o.Customer).Include(o => o.PaymentCard);
             return View(orders.ToList());
         }
 
@@ -48,7 +46,7 @@ namespace Week27_DependencyInjection.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Order order = db.Orders.Find(id);
+            Order order = _db.Orders.Find(id);
             if (order == null)
             {
                 return HttpNotFound();
@@ -59,8 +57,8 @@ namespace Week27_DependencyInjection.Controllers
         // GET: Orders/Create
         public ActionResult Create()
         {
-            ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "FirstName");
-            ViewBag.PaymentCardId = new SelectList(db.PaymentCards, "PaymentCardId", "CardNumber");
+            ViewBag.CustomerId = new SelectList(_db.Customers, "CustomerId", "FirstName");
+            ViewBag.PaymentCardId = new SelectList(_db.PaymentCards, "PaymentCardId", "CardNumber");
             return View();
         }
 
@@ -73,13 +71,13 @@ namespace Week27_DependencyInjection.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Orders.Add(order);
-                db.SaveChanges();
+                _db.Orders.Add(order);
+                _db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "FirstName", order.CustomerId);
-            ViewBag.PaymentCardId = new SelectList(db.PaymentCards, "PaymentCardId", "CardNumber", order.PaymentCardId);
+            ViewBag.CustomerId = new SelectList(_db.Customers, "CustomerId", "FirstName", order.CustomerId);
+            ViewBag.PaymentCardId = new SelectList(_db.PaymentCards, "PaymentCardId", "CardNumber", order.PaymentCardId);
             return View(order);
         }
 
@@ -90,13 +88,13 @@ namespace Week27_DependencyInjection.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Order order = db.Orders.Find(id);
+            Order order = _db.Orders.Find(id);
             if (order == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "FirstName", order.CustomerId);
-            ViewBag.PaymentCardId = new SelectList(db.PaymentCards, "PaymentCardId", "CardNumber", order.PaymentCardId);
+            ViewBag.CustomerId = new SelectList(_db.Customers, "CustomerId", "FirstName", order.CustomerId);
+            ViewBag.PaymentCardId = new SelectList(_db.PaymentCards, "PaymentCardId", "CardNumber", order.PaymentCardId);
             return View(order);
         }
 
@@ -112,9 +110,9 @@ namespace Week27_DependencyInjection.Controllers
             if (ModelState.IsValid)
             {
 
-                order.OrderItems = db.OrderItems.Where(oi => oi.OrderId == order.OrderId).ToList<OrderItem>();
-                order.PaymentCard = db.PaymentCards.Where(pc => pc.PaymentCardId == order.PaymentCardId).First<PaymentCard>();
-                order.Customer = db.Customers.Where(c => c.CustomerId == order.CustomerId).First<Customer>();
+                order.OrderItems = _db.OrderItems.Where(oi => oi.OrderId == order.OrderId).ToList<OrderItem>();
+                order.PaymentCard = _db.PaymentCards.Where(pc => pc.PaymentCardId == order.PaymentCardId).First<PaymentCard>();
+                order.Customer = _db.Customers.Where(c => c.CustomerId == order.CustomerId).First<Customer>();
 
                 orderConfirmation.OrderTotal = order.getTotalValue();
 
@@ -132,8 +130,8 @@ namespace Week27_DependencyInjection.Controllers
 
                 try
                 {
-                    db.Entry(order).State = EntityState.Modified;
-                    db.SaveChanges();
+                    _db.SetModified(order);
+                    _db.SaveChanges();
                     orderConfirmation.DatabaseUpdateOutcome = "Our database has been updated to confirm your order";
                 }
                 catch (Exception ex)
@@ -146,7 +144,7 @@ namespace Week27_DependencyInjection.Controllers
                 return RedirectToAction("Confirm", orderConfirmation);
 
             }
-            ViewBag.PaymentCardId = new SelectList(db.PaymentCards, "PaymentCardId", "CardNumber", order.PaymentCardId);
+            ViewBag.PaymentCardId = new SelectList(_db.PaymentCards, "PaymentCardId", "CardNumber", order.PaymentCardId);
             return View(order);
         }
 
@@ -233,7 +231,7 @@ namespace Week27_DependencyInjection.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Order order = db.Orders.Find(confirmation.OrderId);
+            Order order = _db.Orders.Where(o => o.OrderId == confirmation.OrderId).First();
             if (order == null)
             {
                 return HttpNotFound();
@@ -251,7 +249,7 @@ namespace Week27_DependencyInjection.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Order order = db.Orders.Find(id);
+            Order order = _db.Orders.Find(id);
             if (order == null)
             {
                 return HttpNotFound();
@@ -264,9 +262,9 @@ namespace Week27_DependencyInjection.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Order order = db.Orders.Find(id);
-            db.Orders.Remove(order);
-            db.SaveChanges();
+            Order order = _db.Orders.Find(id);
+            _db.Orders.Remove(order);
+            _db.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -274,7 +272,7 @@ namespace Week27_DependencyInjection.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _db.Dispose();
             }
             base.Dispose(disposing);
         }
