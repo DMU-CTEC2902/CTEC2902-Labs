@@ -12,9 +12,15 @@
 
         <h1>Welcome to the error-prone website</h1>
 
-        <!-- The label contains the contents of the content text file -->
-
         <asp:Label ID="lblContent" runat="server" />
+
+        <br />
+
+        <asp:Label ID="lblMoreContent" runat="server" />
+
+        <br />
+
+        <asp:Label ID="lblEvenMoreContent" runat="server" />
     
     </div>
     </form>
