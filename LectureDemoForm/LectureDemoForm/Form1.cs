@@ -15,6 +15,9 @@ namespace LectureDemoForm
         public Form1()
         {
             InitializeComponent();
+
+
+            //stuff
         }
     }
 }
