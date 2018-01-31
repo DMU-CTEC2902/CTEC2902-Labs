@@ -57,5 +57,19 @@ namespace ErrorProneWebsite.Models
 
             return contentMessage;
         }
+
+        public string GetEvenMoreContent()
+        {
+            string contentMessage = String.Empty;
+
+            if (!File.Exists(_contentFilePath)) throw new FileNotFoundException(
+                 "The Content file doesn't exist in the location specified...");
+
+            using (StreamReader streamReader = new StreamReader(_contentFilePath))
+            {
+                contentMessage = streamReader.ReadToEnd();
+            }
+            return contentMessage;
+        }
     }
 }
