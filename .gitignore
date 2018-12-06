@@ -187,3 +187,5 @@ FakesAssemblies/
 GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
+/LectureDemoForm/.vs/LectureDemoForm/v15/Server/sqlite3
+/.vs
