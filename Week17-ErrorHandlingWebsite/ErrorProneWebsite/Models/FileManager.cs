@@ -23,7 +23,7 @@ namespace ErrorProneWebsite.Models
 
         public string GetContent()
         {
-            
+            //Sets Up the Reader
             StreamReader streamReader = new StreamReader(_contentFilePath);
 
             //Returns the string from the file
