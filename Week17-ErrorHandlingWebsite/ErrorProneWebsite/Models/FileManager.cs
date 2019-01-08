@@ -26,6 +26,7 @@ namespace ErrorProneWebsite.Models
             
             StreamReader streamReader = new StreamReader(_contentFilePath);
 
+            //Returns the string from the file
             return streamReader.ReadToEnd();
         }
     }
