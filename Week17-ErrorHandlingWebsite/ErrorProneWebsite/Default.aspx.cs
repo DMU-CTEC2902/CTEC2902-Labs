@@ -26,6 +26,26 @@ namespace ErrorProneWebsite
             // The text property of the label contained in the ASPX file is set with the content returned by the FileManager 
 
             lblContent.Text = contentManager.GetContent();
+
+
+
+
+
+            //string outcomeOfAddingEvenMoreContent = String.Empty;
+
+            //try
+            //{
+            //    outcomeOfAddingEvenMoreContent = contentManager.GetEvenMoreContent();
+            //}
+            //catch (Exception ex)
+            //{
+            //    outcomeOfAddingEvenMoreContent = ex.Message;
+            //}
+            //finally
+            //{
+            //    lblEvenMoreContent.Text = outcomeOfAddingEvenMoreContent;
+            //}
+
         }
     }
 }
