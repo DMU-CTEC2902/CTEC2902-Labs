@@ -23,10 +23,10 @@ namespace ErrorProneWebsite.Models
 
         public string GetContent()
         {
-            
+
             StreamReader streamReader = new StreamReader(_contentFilePath);
 
             return streamReader.ReadToEnd();
         }
-
+    }
 }
