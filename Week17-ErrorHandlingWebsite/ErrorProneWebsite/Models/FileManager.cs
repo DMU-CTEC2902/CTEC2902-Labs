@@ -21,16 +21,41 @@ namespace ErrorProneWebsite.Models
         /// </summary>
         /// <returns>The contents of the file from the file path as a string.</returns>
 
+        //public string GetContent()
+        //{
+        //    //Sets Up the Reader
+        //    StreamReader streamReader = new StreamReader(_contentFilePath);
+
+        //    //Returns the string from the file
+        //    return streamReader.ReadToEnd();
+
+        //}
+
+
         public string GetContent()
         {
-            //Sets Up the Reader
-            StreamReader streamReader = new StreamReader(_contentFilePath);
+            string contentMessage = String.Empty;
+            StreamReader streamReader = null;
+            try
+            {
+                streamReader = new StreamReader(_contentFilePath);
+                contentMessage = streamReader.ReadToEnd();
+            }
+            catch (Exception ex)
+            {
+                contentMessage = String.Format("{0}{1}{2}",
+                          "Blimey! Something totally unexpected just happened!",
+                          Environment.NewLine,
+                          ex.Message);
+            }
+            finally
+            {
+                if (streamReader != null) streamReader.Close();
+            }
 
-            //Returns the string from the file
-            return streamReader.ReadToEnd();
-
-
-            //Test Comment
+            return contentMessage;
         }
+
     }
+}
 }
