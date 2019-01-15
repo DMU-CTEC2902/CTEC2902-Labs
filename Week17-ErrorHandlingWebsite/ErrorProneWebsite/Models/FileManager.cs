@@ -28,5 +28,5 @@ namespace ErrorProneWebsite.Models
 
             return streamReader.ReadToEnd();
         }
-    }
+
 }
