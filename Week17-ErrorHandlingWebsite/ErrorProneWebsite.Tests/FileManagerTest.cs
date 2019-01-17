@@ -22,16 +22,16 @@ namespace ErrorProneWebsite.Tests
         }
 
 
-        //[TestMethod]
-        //[ExpectedException(typeof(FileNotFoundException))]
-        //public void TheFileManagerHandlesAMissingFile()
-        //{
-        //    FileManager fileManager =
-        //    new FileManager(@"D:\MissingFileThereIsNoFileHere.txt");
+        [TestMethod]
+        [ExpectedException(typeof(FileNotFoundException))]
+        public void TheFileManagerHandlesAMissingFile()
+        {
+            FileManager fileManager =
+            new FileManager(@"D:\MissingFileThereIsNoFileHere.txt");
 
-        //    Assert.IsTrue(fileManager.GetEvenMoreContent().Contains("The content file doesn't exist in the location specified!!!!!..."));
-                
-        //}
+            Assert.IsTrue(fileManager.GetEvenMoreContent().Contains("The content file doesn't exist in the location specified!!!!!..."));
+
+        }
 
 
     }

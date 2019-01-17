@@ -17,7 +17,7 @@ namespace ErrorProneWebsite
             
             string appDataDirectory = Server.MapPath("/App_Data");
 
-            string contentFilePath = string.Format(@"{0}\{1}", appDataDirectory, "Content.txt");
+            string contentFilePath = string.Format(@"{0}\{1}", appDataDirectory, "Contenfgmkbt.txt");
 
             // Then a file manager is created to read the content from the file
 
@@ -28,23 +28,20 @@ namespace ErrorProneWebsite
             lblContent.Text = contentManager.GetContent();
 
 
+            string outcomeOfAddingEvenMoreContent = String.Empty;
 
-
-
-            //string outcomeOfAddingEvenMoreContent = String.Empty;
-
-            //try
-            //{
-            //    outcomeOfAddingEvenMoreContent = contentManager.GetEvenMoreContent();
-            //}
-            //catch (Exception ex)
-            //{
-            //    outcomeOfAddingEvenMoreContent = ex.Message;
-            //}
-            //finally
-            //{
-            //    lblEvenMoreContent.Text = outcomeOfAddingEvenMoreContent;
-            //}
+            try
+            {
+                outcomeOfAddingEvenMoreContent = contentManager.GetEvenMoreContent();
+            }
+            catch (Exception ex)
+            {
+                outcomeOfAddingEvenMoreContent = ex.Message;
+            }
+            finally
+            {
+                lblEvenMoreContent.Text = outcomeOfAddingEvenMoreContent;
+            }
 
         }
     }
