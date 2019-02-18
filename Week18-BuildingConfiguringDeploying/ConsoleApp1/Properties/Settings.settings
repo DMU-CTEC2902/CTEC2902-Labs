@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ConsoleApp1.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="GreetingMessage" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Hello there!</Value>
+    </Setting>
+    <Setting Name="InAGoodMood" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="AngryMessage" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Grr!</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

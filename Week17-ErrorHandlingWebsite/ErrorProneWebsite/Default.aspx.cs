@@ -17,7 +17,7 @@ namespace ErrorProneWebsite
             
             string appDataDirectory = Server.MapPath("/App_Data");
 
-            string contentFilePath = string.Format(@"{0}\{1}", appDataDirectory, "Content.txt");
+            string contentFilePath = string.Format(@"{0}\{1}", appDataDirectory, "Contenfgmkbt.txt");
 
             // Then a file manager is created to read the content from the file
 
@@ -26,6 +26,23 @@ namespace ErrorProneWebsite
             // The text property of the label contained in the ASPX file is set with the content returned by the FileManager 
 
             lblContent.Text = contentManager.GetContent();
+
+
+            string outcomeOfAddingEvenMoreContent = String.Empty;
+
+            try
+            {
+                outcomeOfAddingEvenMoreContent = contentManager.GetEvenMoreContent();
+            }
+            catch (Exception ex)
+            {
+                outcomeOfAddingEvenMoreContent = ex.Message;
+            }
+            finally
+            {
+                lblEvenMoreContent.Text = outcomeOfAddingEvenMoreContent;
+            }
+
         }
     }
 }
