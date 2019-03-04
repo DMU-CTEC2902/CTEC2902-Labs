@@ -1,0 +1,20 @@
+﻿@model List<Week24_Views.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<ul>
+    @foreach (var product in @Model)
+    {
+        <li>
+            <a href="~/Product/Details/@product.ProductId">@product.Name</a>
+            @if (product.Price > 750)
+            {
+                <text>Bling!</text>
+            }
+        </li>
+    }
+</ul>

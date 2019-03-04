@@ -1,0 +1,18 @@
+﻿@model Week24_Views.Models.CustomerProductViewModel
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Product/_CustomerProductLayout.cshtml";
+}
+@section Customer {
+    <h2>Customer info:</h2>
+    <p><strong>First Name:</strong> @Model.Customer.FirstName</p>
+    <p><strong>First Name:</strong> @Model.Customer.LastName</p>
+}
+@section Product {
+    <h2>@Model.Product.Name</h2>
+    <h3>@Model.Product.Colour</h3>
+    <p>@Model.Product.Description</p>
+    <p><strong>@Model.Product.Price</strong></p>
+}
+
+
