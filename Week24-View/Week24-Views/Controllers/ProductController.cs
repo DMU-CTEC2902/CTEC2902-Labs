@@ -42,6 +42,7 @@ namespace Week24_Views.Controllers
         public ActionResult Details(int? id)
         {
             if (id == null) return new HttpNotFoundResult();
+
             Product selectedProduct = _products.First(p => p.ProductId == id);
             if (selectedProduct == null) return new HttpNotFoundResult();
 
