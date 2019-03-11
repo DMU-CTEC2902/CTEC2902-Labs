@@ -4,64 +4,174 @@
     ViewBag.Title = "Index";
 }
 
-<h2>View order # @Model.OrderId</h2>
+<h2>
+    View order <span class="text-warning">
+        #
+        @Model.OrderId
+    </span>
+</h2>
 
-<h3>Customer Details</h3>
 
-@Html.HiddenFor(o => o.Customer.CustomerId)
 
-<p><strong>Title:</strong> @Model.Customer.Title</p>
-<p><strong>First Name:</strong> @Model.Customer.FirstName</p>
-<p><strong>Middle Name:</strong> @Model.Customer.MiddleName</p>
-<p><strong>Last Name:</strong> @Model.Customer.LastName</p>
 
-<h4>Home address</h4>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            <a data-toggle="collapse" href="#customerInfo">
+                Customer Details
+                <span class=""></span>
+            </a>
+        </h3>
 
-@Html.HiddenFor(o => o.Customer.HomeAddress.AddressId)
+    </div>
+    <div id="customerInfo" class="panel-collapse collapse">
+        <div class=”panel-body”>
+            @Html.HiddenFor(o => o.Customer.CustomerId)
+            <p><strong>Title:</strong> @Model.Customer.Title</p>
+            <p><strong>First Name:</strong> @Model.Customer.FirstName</p>
+            <p><strong>Middle Name:</strong> @Model.Customer.MiddleName</p>
+            <p><strong>Last Name:</strong> @Model.Customer.LastName</p>
+        </div>
+    </div>
+</div>
 
-<p><strong>Line 1:</strong> @Model.Customer.HomeAddress.Line1</p>
-<p><strong>Line 2:</strong> @Model.Customer.HomeAddress.Line2</p>
-<p><strong>Town:</strong> @Model.Customer.HomeAddress.Town</p>
-<p><strong>County:</strong> @Model.Customer.HomeAddress.County</p>
-<p><strong>Postcode:</strong> @Model.Customer.HomeAddress.PostCode</p>
 
-<h4>Delivery address</h4>
 
-@Html.HiddenFor(o => o.Customer.DeliveryAddress.AddressId)
+<button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#homeAddressModal">
+    Home Address
+</button>
+<button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#deliveryAddressModal">
+    Delivery Address
+</button>
 
-<p><strong>Line 1:</strong> @Model.Customer.DeliveryAddress.Line1</p>
-<p><strong>Line 2:</strong> @Model.Customer.DeliveryAddress.Line2</p>
-<p><strong>Town:</strong> @Model.Customer.DeliveryAddress.Town</p>
-<p><strong>County:</strong> @Model.Customer.DeliveryAddress.County</p>
-<p><strong>Postcode:</strong> @Model.Customer.DeliveryAddress.PostCode</p>
+
+<div class="modal fade" id="homeAddressModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+                <h4>Home address</h4>
+            </div>
+            <div class="modal-body">
+                @Html.HiddenFor(o => o.Customer.HomeAddress.AddressId)
+                <p>
+                    <strong>Line 1:</strong>
+                    @Model.Customer.HomeAddress.Line1
+                </p>
+                <p>
+                    <strong>Line 2:</strong>
+                    @Model.Customer.HomeAddress.Line2
+                </p>
+                <p>
+                    <strong>Town:</strong>
+                    @Model.Customer.HomeAddress.Town
+                </p>
+                <p>
+                    <strong>County:</strong>
+                    @Model.Customer.HomeAddress.County
+                </p>
+                <p>
+                    <strong>Postcode:</strong>
+                    @Model.Customer.HomeAddress.PostCode
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default"
+                        data-dismiss="modal">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="deliveryAddressModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+                <h4>Delivery address</h4>
+            </div>
+            <div class="modal-body">
+                @Html.HiddenFor(o => o.Customer.DeliveryAddress.AddressId)
+                <p>
+                    <strong>Line 1:</strong>
+                    @Model.Customer.DeliveryAddress.Line1
+                </p>
+                <p>
+                    <strong>Line 2:</strong>
+                    @Model.Customer.DeliveryAddress.Line2
+                </p>
+                <p>
+                    <strong>Town:</strong>
+                    @Model.Customer.DeliveryAddress.Town
+                </p>
+                <p>
+                    <strong>County:</strong>
+                    @Model.Customer.DeliveryAddress.County
+                </p>
+                <p>
+                    <strong>Postcode:</strong>
+                    @Model.Customer.DeliveryAddress.PostCode
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default"
+                        data-dismiss="modal">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <h3>Order details</h3>
 
-<p><strong>Date received:</strong> @Model.DateReceived.ToString("dd/MM/yyyy")</p>
-<p><strong>Date dispatched:</strong> @Model.DateDispatched.ToString("dd/MM/yyyy")</p>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <p class="alert-info col-md-6">
+            <strong>Date received:</strong>
+            @Model.DateReceived.ToString("dd/MM/yyyy")
+        </p>
+        <p class="alert-success col-md-6">
+            <strong>Date dispatched:</strong>
+            @Model.DateDispatched.ToString("dd/MM/yyyy")
+        </p>
 
-<table>
+    </div>
+</div>
 
-    <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Price</th>
-    </tr>
 
-    @foreach (var product in @Model.Items)
-    {
-        <tr>
-            <td>@product.ProductId</td>
-            <td>@product.Name</td>
-            <td>@product.Description</td>
-            <td>@product.Price</td>
-        </tr>
-    }
+<div class="panel panel-default">
+    <div class="panel-body">
+        <table class="table table-striped">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th class="text-right">Price</th>
+            </tr>
 
-    <tr>
-        <td>Total</td>
-        <td colspan="3" align="right">@Model.GetTotal()</td>
-    </tr>
+            @foreach (var product in @Model.Items)
+            {
+                <tr>
+                    <td>@product.ProductId</td>
+                    <td>@product.Name</td>
+                    <td>@product.Description</td>
+                    <td class="text-right">@product.Price</td>
+                </tr>
+            }
 
-</table>
+            <tr class="info">
+                <td>Total</td>
+                <td colspan="3" class="text-right">@Model.GetTotal()</td>
+            </tr>
+        </table>
+
+    </div>
+</div>
