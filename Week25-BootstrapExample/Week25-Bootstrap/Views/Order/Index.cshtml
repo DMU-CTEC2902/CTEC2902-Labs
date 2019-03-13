@@ -5,7 +5,7 @@
 }
 
 <h2>
-    View order <span class="text-warning">
+    View order <span class="badge badge-primary">
         #
         @Model.OrderId
     </span>
@@ -14,9 +14,9 @@
 
 
 
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h3 class="panel-title">
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">
             <a data-toggle="collapse" href="#customerInfo">
                 Customer Details
                 <span class=""></span>
@@ -24,25 +24,28 @@
         </h3>
 
     </div>
-    <div id="customerInfo" class="panel-collapse collapse">
-        <div class=”panel-body”>
+    <div id="customerInfo" class="collapse">
+        <div class="card-body">
             @Html.HiddenFor(o => o.Customer.CustomerId)
             <p><strong>Title:</strong> @Model.Customer.Title</p>
             <p><strong>First Name:</strong> @Model.Customer.FirstName</p>
             <p><strong>Middle Name:</strong> @Model.Customer.MiddleName</p>
             <p><strong>Last Name:</strong> @Model.Customer.LastName</p>
+
+            <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#homeAddressModal">
+                Home Address
+            </button>
+            <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#deliveryAddressModal">
+                Delivery Address
+            </button>
+
         </div>
     </div>
 </div>
 
 
 
-<button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#homeAddressModal">
-    Home Address
-</button>
-<button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#deliveryAddressModal">
-    Delivery Address
-</button>
+
 
 
 <div class="modal fade" id="homeAddressModal">
@@ -132,13 +135,13 @@
 
 <h3>Order details</h3>
 
-<div class="panel panel-default">
-    <div class="panel-body">
-        <p class="alert-info col-md-6">
+<div class="card">
+    <div class="card-body">
+        <p class="alert-info col-md-4">
             <strong>Date received:</strong>
             @Model.DateReceived.ToString("dd/MM/yyyy")
         </p>
-        <p class="alert-success col-md-6">
+        <p class="alert-success col-md-4">
             <strong>Date dispatched:</strong>
             @Model.DateDispatched.ToString("dd/MM/yyyy")
         </p>
@@ -147,8 +150,8 @@
 </div>
 
 
-<div class="panel panel-default">
-    <div class="panel-body">
+<div class="card">
+    <div class="card-body">
         <table class="table table-striped">
             <tr>
                 <th>Id</th>
@@ -167,7 +170,7 @@
                 </tr>
             }
 
-            <tr class="info">
+            <tr class="table-info">
                 <td>Total</td>
                 <td colspan="3" class="text-right">@Model.GetTotal()</td>
             </tr>
