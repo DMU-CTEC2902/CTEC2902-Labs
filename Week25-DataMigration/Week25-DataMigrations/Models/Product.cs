@@ -7,8 +7,9 @@ namespace Week25_DataMigrations.Models
 {
     public class Product
     {
-        public int ProductId { get; set; }
-        public string Name { get; set; }
-        public decimal Price { get; set; }
+        public virtual int ProductId { get; set; }
+        public virtual string Name { get; set; }
+        public virtual decimal Price { get; set; }
+        public virtual string Colour { get; set; }
     }
 }
